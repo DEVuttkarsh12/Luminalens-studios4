@@ -1,31 +1,32 @@
 import { motion } from 'framer-motion';
 
 export default function PixelReveal({ onFinished }) {
-    // Define grid dimensions
-    const columns = 20;
-    const rows = 12;
+    // Higher density for a more "legit" pixelated feel
+    const columns = 40;
+    const rows = 24;
     const totalBlocks = columns * rows;
 
     // Animation variants for the blocks
     const blockVariants = {
-        initial: { opacity: 1 },
+        initial: { opacity: 1, scale: 1.1 },
         reveal: (i) => {
             const x = i % columns;
             const y = Math.floor(i / columns);
             const centerX = (columns - 1) / 2;
             const centerY = (rows - 1) / 2;
 
-            // Calculate distance from center
+            // Calculate distance from center for radial effect
             const distance = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
             const maxDistance = Math.sqrt(Math.pow(centerX, 2) + Math.pow(centerY, 2));
 
             return {
                 opacity: 0,
+                scale: 1,
                 transition: {
-                    duration: 0.3,
-                    // Delay based on distance from center for a radial reveal
-                    delay: (distance / maxDistance) * 0.5 + Math.random() * 0.15,
-                    ease: "easeOut"
+                    duration: 0.5,
+                    // More sophisticated delay with controlled randomness
+                    delay: (distance / maxDistance) * 0.8 + Math.random() * 0.3,
+                    ease: [0.22, 1, 0.36, 1] // Smooth quintic ease
                 }
             };
         }
