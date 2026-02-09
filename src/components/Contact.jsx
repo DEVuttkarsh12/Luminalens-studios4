@@ -181,8 +181,8 @@ export function Footer() {
             <div className="container">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '60px' }}>
                     <div>
-                        <div style={{ fontWeight: 900, fontSize: '1.6rem', color: 'var(--text-main)', letterSpacing: '2px', marginBottom: '20px' }}>
-                            STUDIO<span style={{ color: '#666' }}>.X</span>
+                        <div style={{ fontWeight: 900, fontSize: '1.4rem', color: 'var(--text-main)', letterSpacing: '1px', marginBottom: '20px' }}>
+                            Luminalens <span style={{ color: 'var(--text-muted)', fontWeight: 300 }}>Studios</span>
                         </div>
                         <p style={{ color: 'var(--text-muted)', maxWidth: '320px', lineHeight: 1.8, fontSize: '0.9rem' }}>
                             A premium creative agency specializing in the future of digital art and 3D experiences.
@@ -210,7 +210,7 @@ export function Footer() {
                 </div>
 
                 <div style={{ marginTop: '100px', textAlign: 'center', color: 'rgba(255,255,255,0.1)', fontSize: '0.75rem', letterSpacing: '2px', textTransform: 'uppercase' }}>
-                    &copy; 2026 STUDIO.X - PROPELLED BY ANTIGRAVITY
+                    &copy; 2026 LUMINALENS STUDIOS - PROPELLED BY ANTIGRAVITY
                 </div>
             </div>
         </footer>

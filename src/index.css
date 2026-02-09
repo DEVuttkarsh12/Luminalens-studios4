@@ -1,26 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap');
 
 :root {
-  /* Minimal Professional Palette */
-  --bg-color: #080808;
-  --bg-surface: #101010;
-  --bg-card: rgba(20, 20, 20, 0.4);
+  /* Nordic Aurora Palette */
+  --bg-color: #0a0b10;
+  --bg-surface: #11141d;
+  --bg-card: rgba(20, 24, 35, 0.4);
 
-  --primary-glow: #ffffff;
-  /* Pure White Accent */
-  --secondary-glow: #8e8e93;
-  /* Muted Silver/Grey */
-  --text-main: #ffffff;
-  --text-muted: #888888;
+  --primary-glow: #4fd1c5;
+  /* Nordic Teal */
+  --secondary-glow: #6366f1;
+  /* Deep Indigo */
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
 
-  --accent-gradient: linear-gradient(135deg, #ffffff, #888888);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-bg: rgba(255, 255, 255, 0.02);
+  --accent-gradient: linear-gradient(135deg, #4fd1c5, #6366f1);
+  --glass-border: rgba(79, 209, 197, 0.2);
+  --glass-bg: rgba(255, 255, 255, 0.015);
 
   --container-width: 1200px;
   --section-padding: 100px 20px;
 
   --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ultra-Wide Optimization */
+@media (min-width: 1800px) {
+  :root {
+    --container-width: 1500px;
+    --section-padding: 140px 40px;
+  }
+}
+
+/* Mobile Base Optimization */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 60px 15px;
+  }
 }
 
 * {

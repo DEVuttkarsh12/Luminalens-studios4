@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const STATUS_MESSAGES = [
-    "Initializing Studio",
+    "Initializing Luminalens Studios",
     "Compiling Shaders",
     "Fetching Assets",
     "Optimizing Meshes",
