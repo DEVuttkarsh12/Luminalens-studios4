@@ -1,4 +1,6 @@
 import { useRef, useEffect } from 'react';
+import { Canvas } from '@react-three/fiber';
+import SimulationBackground from './SimulationBackground';
 import videoSrc from '../assets/lls-logo.mp4';
 
 export default function Background({ phase, onVideoEnded }) {
@@ -11,19 +13,11 @@ export default function Background({ phase, onVideoEnded }) {
                 if (onVideoEnded) onVideoEnded();
             });
         }
-    }, []);
-
-    // Ensure the video plays/loops when transitioning to reveal/site phase
-    useEffect(() => {
-        if (videoRef.current && (phase === 'reveal' || phase === 'site')) {
-            videoRef.current.loop = true;
-            videoRef.current.play();
-        }
     }, [phase]);
 
     // Determine styles based on phase
     const isVideoPhase = phase === 'video';
-    const isRevealOrSite = phase === 'reveal' || phase === 'site';
+    const isSiteOrReveal = phase === 'reveal' || phase === 'site';
 
     const videoStyle = {
         position: 'absolute',
@@ -36,7 +30,7 @@ export default function Background({ phase, onVideoEnded }) {
         filter: isVideoPhase ? 'none' : 'blur(12px) brightness(0.6)',
         opacity: isVideoPhase ? 1 : 0,
         mixBlendMode: isVideoPhase ? 'normal' : 'screen',
-        zIndex: isVideoPhase ? 5000 : -1,
+        zIndex: isVideoPhase ? 5000 : 0,
     };
 
     return (
@@ -46,7 +40,7 @@ export default function Background({ phase, onVideoEnded }) {
             left: 0,
             width: '100%',
             height: '100vh',
-            zIndex: isVideoPhase ? 5000 : -2,
+            zIndex: isVideoPhase ? 5000 : -1,
             pointerEvents: 'none',
             background: 'transparent',
             overflow: 'hidden'
@@ -60,6 +54,14 @@ export default function Background({ phase, onVideoEnded }) {
                     onEnded={onVideoEnded}
                     style={videoStyle}
                 />
+            )}
+
+            {isSiteOrReveal && (
+                <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -2 }}>
+                    <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+                        <SimulationBackground />
+                    </Canvas>
+                </div>
             )}
         </div>
     );

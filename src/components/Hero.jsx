@@ -51,11 +51,9 @@ export default function Hero() {
                     >
                         Your dream <br />
                         <span style={{
-                            background: 'var(--accent-gradient)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            filter: 'drop-shadow(0 10px 20px rgba(127, 58, 161, 0.3))',
-                            textShadow: '0 0 2px rgba(255,255,255,0.1)'
+                            color: '#fff',
+                            filter: 'drop-shadow(0 10px 20px rgba(127, 58, 161, 0.4))',
+                            textShadow: '0 0 10px rgba(255,255,255,0.2)'
                         }}>Our canvas</span>
                     </h1>
 
@@ -75,7 +73,7 @@ export default function Hero() {
                     </p>
 
                     <div className="hero-btns" style={{ display: 'flex', gap: '30px', justifyContent: 'flex-start' }}>
-                        <button className="glow-btn" style={{ background: 'var(--accent-gradient)', color: '#000', border: 'none' }}>View Projects</button>
+                        <button className="glow-btn" style={{ background: 'var(--accent-gradient)', color: '#fff', border: 'none' }}>View Projects</button>
                         <button style={{
                             border: '1px solid var(--primary-glow)',
                             padding: '14px 36px',

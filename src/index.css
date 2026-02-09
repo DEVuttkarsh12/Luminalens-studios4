@@ -3,7 +3,8 @@
 :root {
   /* Purple Midnight Palette */
   --bg-color: #010103;
-  --bg-gradient: linear-gradient(180deg, #010103 0%, #08031d 15%, #1c0b5e 35%, #4221ba 45%, #8257ff 50%, #4221ba 55%, #1c0b5e 65%, #08031d 85%, #010103 100%);
+  --bg-image: url('./assets/pngtree-mystic-blackberry-a-textured-design-on-an-abstract-dark-purple-background-image_13879614.png');
+  --bg-glow: radial-gradient(circle at 50% 50%, rgba(93, 34, 209, 0.4) 0%, rgba(28, 11, 94, 0.6) 30%, #08031d 70%, #010103 100%);
   --bg-surface: #0f083b;
   --bg-card: rgba(15, 8, 59, 0.4);
 
@@ -50,14 +51,22 @@ html {
 }
 
 body {
-  background: var(--bg-gradient);
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
   background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   cursor: none;
   /* Hide default cursor */
+}
+
+@keyframes glowBreathe {
+  /* Removed procedural animation for static image */
 }
 
 a,
