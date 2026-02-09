@@ -61,7 +61,7 @@ export default function PixelReveal({ onFinished }) {
                         }
                     }}
                     style={{
-                        background: '#080808', // Match the main background color
+                        background: 'var(--bg-color)', // Match the main background color
                         width: '101%', // Slight overlap to prevent gaps
                         height: '101%'
                     }}

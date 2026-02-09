@@ -10,6 +10,7 @@ import Contact, { Footer } from './components/Contact';
 import Background from './components/Background';
 import Loader from './components/Loader';
 import CustomCursor from './components/CustomCursor';
+import PixelReveal from './components/PixelReveal';
 import './index.css';
 
 function App() {
@@ -29,6 +30,10 @@ function App() {
           phase={phase}
           onVideoEnded={() => setPhase('reveal')}
         />
+      )}
+
+      {phase === 'reveal' && (
+        <PixelReveal onFinished={() => setPhase('site')} />
       )}
 
       <AnimatePresence>
