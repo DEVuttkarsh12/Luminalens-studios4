@@ -33,8 +33,9 @@ export default function Background({ phase, onVideoEnded }) {
         height: '100%',
         objectFit: 'cover',
         transition: 'filter 2s ease, opacity 2s ease',
-        filter: isVideoPhase ? 'none' : 'blur(12px) brightness(0.7)',
-        opacity: isVideoPhase ? 1 : 0.7,
+        filter: isVideoPhase ? 'none' : 'blur(12px) brightness(0.6)',
+        opacity: isVideoPhase ? 1 : 0,
+        mixBlendMode: isVideoPhase ? 'normal' : 'screen',
         zIndex: isVideoPhase ? 5000 : -1,
     };
 
@@ -47,18 +48,19 @@ export default function Background({ phase, onVideoEnded }) {
             height: '100vh',
             zIndex: isVideoPhase ? 5000 : -2,
             pointerEvents: 'none',
-            background: '#000',
+            background: 'transparent',
             overflow: 'hidden'
         }}>
-            <video
-                ref={videoRef}
-                src={videoSrc}
-                muted
-                playsInline
-                loop={isRevealOrSite}
-                onEnded={isVideoPhase ? onVideoEnded : undefined}
-                style={videoStyle}
-            />
+            {isVideoPhase && (
+                <video
+                    ref={videoRef}
+                    src={videoSrc}
+                    muted
+                    playsInline
+                    onEnded={onVideoEnded}
+                    style={videoStyle}
+                />
+            )}
         </div>
     );
 }

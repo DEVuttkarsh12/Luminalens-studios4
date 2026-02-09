@@ -2,7 +2,8 @@
 
 :root {
   /* Purple Midnight Palette */
-  --bg-color: #0c0516;
+  --bg-color: #010103;
+  --bg-gradient: linear-gradient(180deg, #010103 0%, #08031d 15%, #1c0b5e 35%, #4221ba 45%, #8257ff 50%, #4221ba 55%, #1c0b5e 65%, #08031d 85%, #010103 100%);
   --bg-surface: #0f083b;
   --bg-card: rgba(15, 8, 59, 0.4);
 
@@ -49,7 +50,8 @@ html {
 }
 
 body {
-  background-color: var(--bg-color);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;

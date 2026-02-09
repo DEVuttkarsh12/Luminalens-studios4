@@ -177,7 +177,7 @@ export default function Contact() {
 
 export function Footer() {
     return (
-        <footer style={{ padding: '100px 0 60px 0', borderTop: '1px solid rgba(255,255,255,0.05)', background: 'var(--bg-color)' }}>
+        <footer style={{ padding: '100px 0 60px 0', borderTop: '1px solid rgba(255,255,255,0.05)', background: 'transparent' }}>
             <div className="container">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '60px' }}>
                     <div>
