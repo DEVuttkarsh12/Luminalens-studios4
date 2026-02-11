@@ -66,24 +66,14 @@ export default function Services() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="glass"
+                            className="glass-card-premium"
                             style={{
                                 padding: '40px',
                                 display: 'flex',
                                 flexDirection: 'column',
                                 gap: '25px',
-                                borderRadius: '20px',
-                                border: '1px solid var(--glass-border)',
-                                background: 'rgba(15, 8, 59, 0.4)',
-                                backdropFilter: 'blur(10px)',
-                                position: 'relative',
                                 minHeight: '320px',
                                 justifyContent: 'center'
-                            }}
-                            whileHover={{
-                                background: 'rgba(127, 58, 161, 0.05)',
-                                borderColor: 'var(--primary-glow)',
-                                y: -5
                             }}
                         >
                             <div style={{

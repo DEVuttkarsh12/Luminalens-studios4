@@ -1,7 +1,30 @@
-import { useRef, useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
-import SimulationBackground from './SimulationBackground';
+import React, { useRef, useEffect, Suspense } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Stars } from '@react-three/drei';
 import videoSrc from '../assets/lls-logo.mp4';
+
+function MovingStars() {
+    const ref = useRef();
+    useFrame((state, delta) => {
+        if (ref.current) {
+            ref.current.rotation.x -= delta / 10;
+            ref.current.rotation.y -= delta / 15;
+        }
+    });
+    return (
+        <group ref={ref}>
+            <Stars
+                radius={100}
+                depth={60}
+                count={5000}
+                factor={4}
+                saturation={0}
+                fade
+                speed={1}
+            />
+        </group>
+    );
+}
 
 export default function Background({ phase, onVideoEnded }) {
     const videoRef = useRef(null);
@@ -15,7 +38,6 @@ export default function Background({ phase, onVideoEnded }) {
         }
     }, [phase]);
 
-    // Determine styles based on phase
     const isVideoPhase = phase === 'video';
     const isSiteOrReveal = phase === 'reveal' || phase === 'site';
 
@@ -59,7 +81,9 @@ export default function Background({ phase, onVideoEnded }) {
             {isSiteOrReveal && (
                 <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -2 }}>
                     <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-                        <SimulationBackground />
+                        <Suspense fallback={null}>
+                            <MovingStars />
+                        </Suspense>
                     </Canvas>
                 </div>
             )}

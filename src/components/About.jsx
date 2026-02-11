@@ -97,7 +97,10 @@ export default function About() {
                             overflow: 'hidden',
                             position: 'relative',
                             zIndex: 2,
-                            border: '1px solid var(--glass-border)'
+                            border: '1px solid rgba(255, 255, 255, 0.08)',
+                            background: 'rgba(15, 10, 45, 0.25)',
+                            backdropFilter: 'blur(16px) saturate(180%)',
+                            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
                         }}>
                             <img
                                 src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=2070&auto=format&fit=crop"

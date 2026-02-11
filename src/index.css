@@ -1,4 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% auto;
+  animation: gradientMove 3s ease infinite;
+}
 
 :root {
   /* Purple Midnight Palette */
@@ -126,6 +145,41 @@ button {
 .glass:hover {
   border-color: rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.04);
+}
+
+.glass-card-premium {
+  background: linear-gradient(180deg, rgba(30, 10, 60, 0.7) 0%, rgba(10, 5, 30, 0.4) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  /* Violet-500 optimized */
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.glass-card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), transparent 60%);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.glass-card-premium:hover {
+  transform: translateY(-5px);
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.4);
+}
+
+.glass-card-premium:hover::before {
+  opacity: 1;
 }
 
 /* Custom Scrollbar */

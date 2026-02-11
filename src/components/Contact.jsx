@@ -40,7 +40,14 @@ export default function Contact() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                         className="glass"
-                        style={{ padding: '60px' }}
+                        style={{
+                            padding: '60px',
+                            borderRadius: '24px',
+                            border: '1px solid rgba(255, 255, 255, 0.08)',
+                            background: 'rgba(15, 10, 45, 0.25)',
+                            backdropFilter: 'blur(16px) saturate(180%)',
+                            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
+                        }}
                     >
                         <h3 style={{ fontSize: '1.8rem', marginBottom: '2.5rem', letterSpacing: '0.05em' }}>Contact Info</h3>
 
@@ -104,7 +111,14 @@ export default function Contact() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                         className="glass"
-                        style={{ padding: '60px' }}
+                        style={{
+                            padding: '60px',
+                            borderRadius: '24px',
+                            border: '1px solid rgba(255, 255, 255, 0.08)',
+                            background: 'rgba(15, 10, 45, 0.25)',
+                            backdropFilter: 'blur(16px) saturate(180%)',
+                            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
+                        }}
                     >
                         <h3 style={{ fontSize: '1.8rem', marginBottom: '2.5rem', letterSpacing: '0.05em' }}>Q&A / Query</h3>
                         <form style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>

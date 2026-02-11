@@ -25,7 +25,14 @@ export default function Offerings() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                         className="glass"
-                        style={{ padding: '60px', borderRadius: '8px' }}
+                        style={{
+                            padding: '60px',
+                            borderRadius: '24px',
+                            border: '1px solid rgba(255, 255, 255, 0.08)',
+                            background: 'rgba(15, 10, 45, 0.25)',
+                            backdropFilter: 'blur(16px) saturate(180%)',
+                            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
+                        }}
                     >
                         <h3 style={{ fontSize: '2rem', marginBottom: '2rem', fontWeight: 700 }}>Core Services</h3>
                         <ul style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>

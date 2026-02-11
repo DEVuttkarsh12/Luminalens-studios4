@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const projects = [
     {
@@ -32,163 +33,185 @@ const projects = [
 ];
 
 export default function Portfolio() {
+    const targetRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: targetRef,
+    });
+
+    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-65%"]); // Refined percentage for 4 items
+
     return (
-        <section id="work" className="section" style={{ background: 'transparent', paddingBottom: '150px' }}>
-            <div className="container">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    style={{ marginBottom: '8rem', textAlign: 'center' }}
-                >
-                    <span style={{
-                        color: 'var(--primary-glow)',
-                        fontWeight: 700,
-                        letterSpacing: '0.3em',
-                        textTransform: 'uppercase',
-                        fontSize: '0.8rem',
-                        display: 'block',
-                        marginBottom: '1rem'
-                    }}>
-                        Latest Work
-                    </span>
-                    <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', marginBottom: '1.5rem', fontWeight: 900 }}>What We’ve Built
-                    </h2>
-                    <div style={{ width: '40px', height: '2px', background: 'var(--accent-gradient)', margin: '0 auto' }}></div>
-                </motion.div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '160px' }}>
-                    {projects.map((project, index) => {
-                        const isEven = index % 2 !== 0;
-                        return (
-                            <motion.div
-                                key={project.id}
-                                initial={{ opacity: 0, y: 50 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.8, ease: "easeOut" }}
-                                style={{
-                                    display: 'flex',
-                                    flexDirection: isEven ? 'row-reverse' : 'row',
-                                    alignItems: 'center',
-                                    gap: '80px',
-                                    justifyContent: 'space-between'
-                                }}
-                                className="project-row"
-                            >
-                                {/* Image Side */}
-                                <div style={{ flex: '1.2', position: 'relative' }}>
-                                    <motion.div
-                                        whileHover={{ scale: 1.02 }}
-                                        transition={{ duration: 0.4 }}
-                                        className="glass"
-                                        style={{
-                                            borderRadius: '12px',
-                                            overflow: 'hidden',
-                                            aspectRatio: '16/10',
-                                            border: '1px solid var(--glass-border)',
-                                            boxShadow: '0 30px 60px rgba(0,0,0,0.3)'
-                                        }}
-                                    >
-                                        <img
-                                            src={project.img}
-                                            alt={project.title}
-                                            style={{
-                                                width: '100%',
-                                                height: '100%',
-                                                objectFit: 'cover',
-                                                filter: 'grayscale(20%) brightness(0.9)',
-                                                transition: '0.5s ease'
-                                            }}
-                                        />
-                                    </motion.div>
-
-                                    {/* Numbering Background */}
-                                    <div style={{
-                                        position: 'absolute',
-                                        top: '-40px',
-                                        [isEven ? 'right' : 'left']: '-40px',
-                                        fontSize: '8rem',
-                                        fontWeight: 900,
-                                        opacity: 0.03,
-                                        zIndex: -1,
-                                        color: '#fff'
-                                    }}>
-                                        0{index + 1}
-                                    </div>
-                                </div>
-
-                                {/* Content Side */}
-                                <div style={{
-                                    flex: '1',
-                                    textAlign: isEven ? 'right' : 'left',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: isEven ? 'flex-end' : 'flex-start'
-                                }}>
-                                    <span style={{
-                                        color: 'var(--text-muted)',
-                                        fontSize: '0.8rem',
-                                        fontWeight: 700,
-                                        textTransform: 'uppercase',
-                                        letterSpacing: '0.2em',
-                                        marginBottom: '1rem'
-                                    }}>
-                                        {project.category}
-                                    </span>
-                                    <h3 style={{
-                                        fontSize: 'clamp(2rem, 3vw, 3rem)',
-                                        fontWeight: 800,
-                                        marginBottom: '2rem',
-                                        lineHeight: 1.1
-                                    }}>
-                                        {project.title}
-                                    </h3>
-                                    <p style={{
-                                        color: 'var(--text-muted)',
-                                        fontSize: '1.1rem',
-                                        lineHeight: 1.6,
-                                        marginBottom: '2.5rem',
-                                        maxWidth: '450px'
-                                    }}>
-                                        {project.description}
-                                    </p>
-                                    <button style={{
-                                        borderBottom: '1px solid var(--primary-glow)',
-                                        paddingBottom: '5px',
-                                        color: 'var(--text-main)',
-                                        fontWeight: 600,
-                                        letterSpacing: '0.1em',
-                                        fontSize: '0.9rem',
-                                        transition: '0.3s ease'
-                                    }}
-                                        onMouseEnter={(e) => e.target.style.color = 'var(--primary-glow)'}
-                                        onMouseLeave={(e) => e.target.style.color = 'var(--text-main)'}
-                                    >
-                                        VIEW PROJECT
-                                    </button>
-                                </div>
-                            </motion.div>
-                        );
-                    })}
+        <section ref={targetRef} id="work" className="section" style={{
+            background: 'transparent',
+            height: '350vh', /* Slightly reduced to make it faster/tighter */
+            position: 'relative',
+            padding: 0
+        }}>
+            <div style={{
+                position: 'sticky',
+                top: 0,
+                height: '100vh',
+                display: 'flex',
+                flexDirection: 'column', // Allow header to sit above
+                justifyContent: 'center',
+                alignItems: 'flex-start',
+                overflow: 'hidden'
+            }}>
+                <div className="container" style={{
+                    position: 'absolute',
+                    top: '8vh', // Pinned higher up
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    zIndex: 10,
+                    pointerEvents: 'none',
+                    textAlign: 'center',
+                    width: '100%'
+                }}>
+                    <motion.div
+                        style={{ opacity: useTransform(scrollYProgress, [0, 0.15], [1, 0]) }}
+                    >
+                        <span style={{
+                            color: 'var(--primary-glow)',
+                            fontWeight: 700,
+                            letterSpacing: '0.3em',
+                            textTransform: 'uppercase',
+                            fontSize: '0.8rem',
+                            display: 'block',
+                            marginBottom: '0.5rem'
+                        }}>
+                            Latest Work
+                        </span>
+                        <h2 style={{
+                            fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
+                            fontWeight: 900,
+                            color: '#fff',
+                            lineHeight: 1
+                        }}>
+                            What We’ve Built
+                        </h2>
+                    </motion.div>
                 </div>
+
+                <motion.div style={{ x, display: 'flex', gap: '5vw', paddingLeft: '15vw', marginTop: '10vh' }}>
+                    {projects.map((project, index) => (
+                        <ProjectCard key={project.id} project={project} index={index} />
+                    ))}
+                    {/* Extra space at the end */}
+                    <div style={{ minWidth: '20vw' }}></div>
+                </motion.div>
             </div>
 
             <style>{`
-                @media (max-width: 992px) {
-                    .project-row {
-                        flex-direction: column !important;
-                        gap: 40px !important;
-                        text-align: left !important;
-                        align-items: flex-start !important;
-                    }
-                    .project-row div[style*="text-align: right"] {
-                        text-align: left !important;
-                        align-items: flex-start !important;
-                    }
+                @media (max-width: 768px) {
+                    #work { height: auto !important; padding: 60px 0 !important; }
+                    #work > div { position: relative !important; height: auto !important; display: block !important; overflow: visible !important; }
+                    .horizontal-row { flex-direction: column !important; padding: 0 20px !important; gap: 60px !important; transform: none !important; }
                 }
             `}</style>
         </section>
+    );
+}
+
+function ProjectCard({ project, index }) {
+    const cardRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: cardRef,
+        offset: ["start end", "end start"]
+    });
+
+    const yParallax = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
+    return (
+        <div
+            ref={cardRef}
+            style={{
+                minWidth: '70vw',
+                height: '60vh',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexDirection: 'column',
+                marginTop: '15vh' // Pushed down further to clear header
+            }}
+        >
+            <div style={{
+                width: '100%',
+                height: '100%',
+                position: 'relative',
+                overflow: 'hidden',
+                borderRadius: '12px',
+                border: '1px solid var(--glass-border)',
+                background: 'var(--glass-bg)',
+                backdropFilter: 'blur(10px)'
+            }}>
+                <motion.img
+                    src={project.img}
+                    alt={project.title}
+                    style={{
+                        width: '100%',
+                        height: '120%',
+                        objectFit: 'cover',
+                        position: 'absolute',
+                        top: yParallax,
+                        filter: 'grayscale(20%) brightness(0.8)'
+                    }}
+                />
+
+                {/* Overlay Content */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: '0',
+                    left: '0',
+                    width: '100%',
+                    padding: '60px',
+                    background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'flex-end',
+                    zIndex: 2
+                }}>
+                    <span style={{
+                        color: 'var(--primary-glow)',
+                        fontSize: '0.9rem',
+                        fontWeight: 700,
+                        letterSpacing: '0.2em',
+                        marginBottom: '10px'
+                    }}>
+                        {project.category}
+                    </span>
+                    <h3 style={{
+                        fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+                        fontWeight: 900,
+                        marginBottom: '15px'
+                    }}>
+                        {project.title}
+                    </h3>
+                    <p style={{
+                        color: 'rgba(255,255,255,0.7)',
+                        maxWidth: '500px',
+                        fontSize: '1.1rem',
+                        lineHeight: 1.6
+                    }}>
+                        {project.description}
+                    </p>
+                </div>
+
+                {/* Numbering */}
+                <div style={{
+                    position: 'absolute',
+                    top: '20px',
+                    right: '40px',
+                    fontSize: '12rem',
+                    fontWeight: 900,
+                    opacity: 0.1,
+                    color: '#fff',
+                    zIndex: 1,
+                    pointerEvents: 'none'
+                }}>
+                    0{index + 1}
+                </div>
+            </div>
+        </div>
     );
 }
