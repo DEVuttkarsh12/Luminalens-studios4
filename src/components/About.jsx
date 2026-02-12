@@ -90,18 +90,19 @@ export default function About() {
                         transition={{ duration: 0.8 }}
                         style={{ position: 'relative' }}
                     >
-                        <div className="glass" style={{
-                            width: '100%',
-                            height: '500px',
-                            borderRadius: '30px',
-                            overflow: 'hidden',
-                            position: 'relative',
-                            zIndex: 2,
-                            border: '1px solid rgba(255, 255, 255, 0.08)',
-                            background: 'rgba(15, 10, 45, 0.25)',
-                            backdropFilter: 'blur(16px) saturate(180%)',
-                            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
-                        }}>
+                        <motion.div
+                            whileHover={{ y: -10, scale: 1.02 }}
+                            transition={{ duration: 0.5 }}
+                            className="glass-card-premium"
+                            style={{
+                                width: '100%',
+                                height: '500px',
+                                borderRadius: '30px',
+                                overflow: 'hidden',
+                                position: 'relative',
+                                zIndex: 2
+                            }}
+                        >
                             <img
                                 src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=2070&auto=format&fit=crop"
                                 alt="Studio Team"
@@ -115,7 +116,7 @@ export default function About() {
                                 height: '100%',
                                 background: 'linear-gradient(45deg, rgba(84, 22, 181, 0.4), transparent)'
                             }}></div>
-                        </div>
+                        </motion.div>
 
                         {/* Decorative element */}
                         <motion.div

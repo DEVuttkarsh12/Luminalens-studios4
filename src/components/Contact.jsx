@@ -39,36 +39,34 @@ export default function Contact() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="glass"
+                        className="glass-card-premium"
                         style={{
                             padding: '60px',
-                            borderRadius: '24px',
-                            border: '1px solid rgba(255, 255, 255, 0.08)',
-                            background: 'rgba(15, 10, 45, 0.25)',
-                            backdropFilter: 'blur(16px) saturate(180%)',
-                            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '30px'
                         }}
                     >
-                        <h3 style={{ fontSize: '1.8rem', marginBottom: '2.5rem', letterSpacing: '0.05em' }}>Contact Info</h3>
+                        <h3 style={{ fontSize: '1.8rem', letterSpacing: '0.05em', margin: 0 }}>Contact Info</h3>
 
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '30px', marginBottom: '50px' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
                             {contactInfo.map((info) => (
                                 <div key={info.label} style={{ display: 'flex', alignItems: 'center', gap: '25px' }}>
                                     <div style={{
                                         width: '50px',
                                         height: '50px',
-                                        borderRadius: '4px',
+                                        borderRadius: '12px',
                                         background: 'rgba(255,255,255,0.03)',
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
                                         color: '#fff',
-                                        border: '1px solid rgba(255,255,255,0.05)'
+                                        border: '1px solid rgba(255,255,255,0.1)'
                                     }}>
                                         {info.icon}
                                     </div>
                                     <div>
-                                        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '4px' }}>{info.label}</span>
+                                        <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', display: 'block', textTransform: 'uppercase', letterSpacing: '3px', marginBottom: '4px' }}>{info.label}</span>
                                         <span style={{ fontSize: '1.1rem', fontWeight: 700 }}>{info.text}</span>
                                     </div>
                                 </div>
@@ -76,19 +74,19 @@ export default function Contact() {
                         </div>
 
                         <div style={{
-                            marginTop: '50px',
+                            marginTop: '20px',
                             padding: '40px',
                             background: 'rgba(255,255,255,0.015)',
-                            borderRadius: '8px',
+                            borderRadius: '20px',
                             textAlign: 'center',
-                            border: '1px solid var(--glass-border)'
+                            border: '1px solid rgba(255,255,255,0.1)'
                         }}>
                             <div style={{
                                 width: '130px',
                                 height: '130px',
                                 background: '#fff',
                                 padding: '12px',
-                                borderRadius: '4px',
+                                borderRadius: '12px',
                                 margin: '0 auto 25px auto'
                             }}>
                                 <img
@@ -97,9 +95,9 @@ export default function Contact() {
                                     style={{ width: '100%', height: '100%' }}
                                 />
                             </div>
-                            <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                            <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>
                                 Feeling lazy enough? <br />
-                                <span style={{ color: '#fff', fontWeight: 700 }}>Scan QR to start a conversation.</span>
+                                <span style={{ color: '#fff', fontWeight: 800 }}>Scan QR to start a conversation.</span>
                             </p>
                         </div>
                     </motion.div>
@@ -110,31 +108,30 @@ export default function Contact() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="glass"
+                        className="glass-card-premium"
                         style={{
                             padding: '60px',
-                            borderRadius: '24px',
-                            border: '1px solid rgba(255, 255, 255, 0.08)',
-                            background: 'rgba(15, 10, 45, 0.25)',
-                            backdropFilter: 'blur(16px) saturate(180%)',
-                            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '30px'
                         }}
                     >
-                        <h3 style={{ fontSize: '1.8rem', marginBottom: '2.5rem', letterSpacing: '0.05em' }}>Q&A / Query</h3>
-                        <form style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
+                        <h3 style={{ fontSize: '1.8rem', letterSpacing: '0.05em', margin: 0 }}>Q&A / Query</h3>
+                        <form style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                                <label style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '2px' }}>Name</label>
+                                <label style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '3px' }}>Name</label>
                                 <input
                                     type="text"
                                     placeholder="Your Name"
                                     style={{
                                         background: 'transparent',
                                         border: 'none',
-                                        borderBottom: '1px solid var(--glass-border)',
-                                        padding: '15px 0',
+                                        borderBottom: '1px solid rgba(255,255,255,0.1)',
+                                        padding: '12px 0',
                                         color: '#fff',
                                         outline: 'none',
                                         fontFamily: 'inherit',
+                                        fontSize: '1rem',
                                         transition: '0.3s'
                                     }}
                                     onFocus={(e) => e.target.style.borderBottomColor = '#fff'}
@@ -142,18 +139,19 @@ export default function Contact() {
                                 />
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                                <label style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '2px' }}>Email</label>
+                                <label style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '3px' }}>Email</label>
                                 <input
                                     type="email"
                                     placeholder="Your Email"
                                     style={{
                                         background: 'transparent',
                                         border: 'none',
-                                        borderBottom: '1px solid var(--glass-border)',
-                                        padding: '15px 0',
+                                        borderBottom: '1px solid rgba(255,255,255,0.1)',
+                                        padding: '12px 0',
                                         color: '#fff',
                                         outline: 'none',
                                         fontFamily: 'inherit',
+                                        fontSize: '1rem',
                                         transition: '0.3s'
                                     }}
                                     onFocus={(e) => e.target.style.borderBottomColor = '#fff'}
@@ -161,26 +159,27 @@ export default function Contact() {
                                 />
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                                <label style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '2px' }}>Query</label>
+                                <label style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '3px' }}>Query</label>
                                 <textarea
                                     placeholder="How can we help you?"
-                                    rows="4"
+                                    rows="3"
                                     style={{
                                         background: 'transparent',
                                         border: 'none',
-                                        borderBottom: '1px solid var(--glass-border)',
-                                        padding: '15px 0',
+                                        borderBottom: '1px solid rgba(255,255,255,0.1)',
+                                        padding: '12px 0',
                                         color: '#fff',
                                         outline: 'none',
                                         resize: 'none',
                                         fontFamily: 'inherit',
+                                        fontSize: '1rem',
                                         transition: '0.3s'
                                     }}
                                     onFocus={(e) => e.target.style.borderBottomColor = '#fff'}
                                     onBlur={(e) => e.target.style.borderBottomColor = 'rgba(255,255,255,0.1)'}
                                 ></textarea>
                             </div>
-                            <button className="glow-btn" style={{ marginTop: '20px', width: '100%' }}>Submit Query</button>
+                            <button className="glow-btn" style={{ marginTop: '20px' }}>Submit Query</button>
                         </form>
                     </motion.div>
                 </div>

@@ -132,29 +132,36 @@ function ProjectCard({ project, index }) {
                 alignItems: 'center',
                 justifyContent: 'center',
                 flexDirection: 'column',
-                marginTop: '15vh' // Pushed down further to clear header
+                marginTop: '15vh',
+                cursor: 'pointer'
             }}
         >
-            <div style={{
-                width: '100%',
-                height: '100%',
-                position: 'relative',
-                overflow: 'hidden',
-                borderRadius: '12px',
-                border: '1px solid var(--glass-border)',
-                background: 'var(--glass-bg)',
-                backdropFilter: 'blur(10px)'
-            }}>
+            <motion.div
+                whileHover={{ scale: 1.01 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                style={{
+                    width: '100%',
+                    height: '100%',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    borderRadius: '24px',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    background: 'rgba(255, 255, 255, 0.02)',
+                    backdropFilter: 'blur(10px)'
+                }}
+            >
                 <motion.img
                     src={project.img}
                     alt={project.title}
+                    whileHover={{ scale: 1.05, filter: 'grayscale(0%) brightness(1)' }}
+                    transition={{ duration: 0.8 }}
                     style={{
                         width: '100%',
                         height: '120%',
                         objectFit: 'cover',
                         position: 'absolute',
                         top: yParallax,
-                        filter: 'grayscale(20%) brightness(0.8)'
+                        filter: 'grayscale(20%) brightness(0.7)'
                     }}
                 />
 
@@ -164,34 +171,37 @@ function ProjectCard({ project, index }) {
                     bottom: '0',
                     left: '0',
                     width: '100%',
-                    padding: '60px',
-                    background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
+                    padding: 'clamp(30px, 5vw, 60px)',
+                    background: 'linear-gradient(transparent, rgba(0,0,0,0.9))',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'flex-end',
                     zIndex: 2
                 }}>
                     <span style={{
-                        color: 'var(--primary-glow)',
-                        fontSize: '0.9rem',
+                        color: 'rgba(255,255,255,0.5)',
+                        fontSize: '0.8rem',
                         fontWeight: 700,
-                        letterSpacing: '0.2em',
-                        marginBottom: '10px'
+                        letterSpacing: '0.4em',
+                        marginBottom: '15px',
+                        textTransform: 'uppercase'
                     }}>
                         {project.category}
                     </span>
-                    <h3 style={{
-                        fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+                    <h3 className="text-premium" style={{
+                        fontSize: 'clamp(2.5rem, 6vw, 4rem)',
                         fontWeight: 900,
-                        marginBottom: '15px'
+                        marginBottom: '20px',
+                        color: '#fff'
                     }}>
                         {project.title}
                     </h3>
                     <p style={{
-                        color: 'rgba(255,255,255,0.7)',
-                        maxWidth: '500px',
-                        fontSize: '1.1rem',
-                        lineHeight: 1.6
+                        color: 'rgba(255,255,255,0.6)',
+                        maxWidth: '600px',
+                        fontSize: '1rem',
+                        lineHeight: 1.7,
+                        fontWeight: 300
                     }}>
                         {project.description}
                     </p>
@@ -200,18 +210,19 @@ function ProjectCard({ project, index }) {
                 {/* Numbering */}
                 <div style={{
                     position: 'absolute',
-                    top: '20px',
-                    right: '40px',
-                    fontSize: '12rem',
+                    top: '40px',
+                    right: '60px',
+                    fontSize: '10rem',
                     fontWeight: 900,
-                    opacity: 0.1,
+                    fontFamily: '"Outfit", sans-serif',
+                    opacity: 0.05,
                     color: '#fff',
                     zIndex: 1,
                     pointerEvents: 'none'
                 }}>
                     0{index + 1}
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 }

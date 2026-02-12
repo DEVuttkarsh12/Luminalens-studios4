@@ -61,16 +61,16 @@ export default function Testimonials() {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
+                            whileHover={{ y: -10, backgroundColor: 'rgba(255, 255, 255, 0.06)' }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}
-                            className="glass"
+                            className="glass-card-premium"
                             style={{
                                 padding: '40px',
-                                borderRadius: '12px',
                                 display: 'flex',
                                 flexDirection: 'column',
                                 justifyContent: 'space-between',
                                 height: '100%',
-                                border: '1px solid var(--glass-border)'
+                                cursor: 'pointer'
                             }}
                         >
                             <div>

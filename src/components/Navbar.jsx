@@ -63,7 +63,7 @@ export default function Navbar() {
                         ))}
                     </ul>
 
-                    <button className="glow-btn" style={{ padding: '10px 25px', fontSize: '0.75rem' }}>
+                    <button className="glow-btn">
                         Get Started
                     </button>
                 </div>

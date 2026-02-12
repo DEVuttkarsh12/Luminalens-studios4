@@ -43,7 +43,7 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            style={{ width: '100%', position: 'relative', zIndex: 1 }}
+            style={{ width: '100%', position: 'relative', zIndex: 5, background: 'transparent' }}
           >
             <Navbar />
             <Hero />

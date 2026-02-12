@@ -65,6 +65,11 @@ export default function Services() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
+                            whileHover={{
+                                y: -10,
+                                backgroundColor: 'rgba(255, 255, 255, 0.06)',
+                                transition: { duration: 0.4, ease: "easeOut" }
+                            }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             className="glass-card-premium"
                             style={{
@@ -73,7 +78,8 @@ export default function Services() {
                                 flexDirection: 'column',
                                 gap: '25px',
                                 minHeight: '320px',
-                                justifyContent: 'center'
+                                justifyContent: 'center',
+                                cursor: 'pointer'
                             }}
                         >
                             <div style={{

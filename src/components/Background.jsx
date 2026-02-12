@@ -7,8 +7,8 @@ function MovingStars() {
     const ref = useRef();
     useFrame((state, delta) => {
         if (ref.current) {
-            ref.current.rotation.x -= delta / 10;
-            ref.current.rotation.y -= delta / 15;
+            ref.current.rotation.x -= delta / 60;
+            ref.current.rotation.y -= delta / 90;
         }
     });
     return (
@@ -16,11 +16,11 @@ function MovingStars() {
             <Stars
                 radius={100}
                 depth={60}
-                count={5000}
-                factor={4}
+                count={8000}
+                factor={6}
                 saturation={0}
                 fade
-                speed={1}
+                speed={0.5}
             />
         </group>
     );
@@ -62,11 +62,27 @@ export default function Background({ phase, onVideoEnded }) {
             left: 0,
             width: '100%',
             height: '100vh',
-            zIndex: isVideoPhase ? 5000 : -1,
+            zIndex: isVideoPhase ? 5000 : 0,
             pointerEvents: 'none',
             background: 'transparent',
             overflow: 'hidden'
         }}>
+            {/* The base texture layer - moved from body to ensure it stays behind everything */}
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                backgroundColor: 'var(--bg-color)',
+                backgroundImage: 'var(--bg-image)',
+                backgroundAttachment: 'fixed',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundBlendMode: 'overlay',
+                zIndex: -1
+            }} />
+
             {isVideoPhase && (
                 <video
                     ref={videoRef}
@@ -79,8 +95,8 @@ export default function Background({ phase, onVideoEnded }) {
             )}
 
             {isSiteOrReveal && (
-                <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -2 }}>
-                    <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+                <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
+                    <Canvas camera={{ position: [0, 0, 5], fov: 75 }} style={{ background: 'transparent' }}>
                         <Suspense fallback={null}>
                             <MovingStars />
                         </Suspense>
