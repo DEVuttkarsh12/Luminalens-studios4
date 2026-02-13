@@ -26,8 +26,8 @@ export default function Hero() {
                     left: '5%',
                     width: '60%',
                     height: '60%',
-                    background: 'radial-gradient(circle, rgba(127, 58, 161, 0.1) 0%, transparent 70%)',
-                    filter: 'blur(100px)',
+                    // background: 'radial-gradient(circle, rgba(127, 58, 161, 0.1) 0%, transparent 70%)',
+                    // filter: 'blur(100px)',
                     zIndex: 0,
                     pointerEvents: 'none'
                 }}></div>
@@ -37,8 +37,8 @@ export default function Hero() {
                     right: '5%',
                     width: '60%',
                     height: '60%',
-                    background: 'radial-gradient(circle, rgba(93, 34, 209, 0.1) 0%, transparent 70%)',
-                    filter: 'blur(100px)',
+                    // background: 'radial-gradient(circle, rgba(93, 34, 209, 0.1) 0%, transparent 70%)',
+                    // filter: 'blur(100px)',
                     zIndex: 0,
                     pointerEvents: 'none'
                 }}></div>
@@ -47,78 +47,75 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.2 }}
-                    className="glass-hero-card"
                     style={{
                         width: '91%',
-                        maxWidth: '1400px',
-                        height: '78vh',
-                        marginTop: '80px', // Create gap from fixed Navbar
+                        maxWidth: 'var(--container-width)', // Use CSS variable for scaling
                         display: 'flex',
-                        flexDirection: 'row', // Side-by-side layout
+                        flexDirection: 'row',
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        padding: 'clamp(25px, 4vw, 60px)',
+                        padding: 'clamp(25px, 4vw, 100px)', // Increased upper bound
                         zIndex: 10,
-                        transform: 'translateZ(0)',
-                        WebkitBackfaceVisibility: 'hidden'
+                        marginTop: '100px', // More breathing room
+                        gap: '5vw' // Explicit gap for spacing
                     }}
                 >
                     {/* Left: Content */}
                     <div style={{
                         textAlign: 'left',
-                        maxWidth: '600px',
+                        maxWidth: '800px', // Increased for large screens
                         zIndex: 10,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'flex-start'
                     }}>
                         <span style={{
-                            fontSize: '0.7rem',
+                            fontSize: 'clamp(0.7rem, 0.8vw, 0.9rem)',
                             fontWeight: 700,
                             letterSpacing: '0.5em',
-                            color: 'rgba(255,255,255,0.9)', // Changed from 0.3 to pop against tint
                             textTransform: 'uppercase',
-                            marginBottom: '1.2rem',
-                            fontFamily: '"Inter", sans-serif'
+                            marginBottom: '1.5rem',
+                            fontFamily: '"Inter", sans-serif',
+                            color: 'rgba(255,255,255,0.7)'
                         }}>
                             Capabilities / Creative Studio
                         </span>
 
                         <h1 className="text-premium" style={{
-                            fontSize: 'clamp(2rem, 5vw, 4.2rem)',
+                            fontSize: 'clamp(2rem, 6vw, 6rem)', // Increased upper bound
                             lineHeight: 1,
                             fontWeight: 900,
                             color: '#fff',
                             textTransform: 'uppercase',
                             letterSpacing: '-0.02em',
                             fontFamily: '"Outfit", sans-serif',
-                            marginBottom: '1.5rem'
+                            marginBottom: '2rem'
                         }}>
                             Your <span className="text-gradient-purple">Dream</span><br />
                             Our <span className="text-gradient-purple">Canvas</span>
                         </h1>
 
                         <p style={{
-                            fontSize: 'clamp(0.85rem, 1.2vw, 0.95rem)',
+                            fontSize: 'clamp(0.85rem, 1.3vw, 1.2rem)', // Increased upper bound
                             lineHeight: 1.7,
-                            color: 'rgba(255,255,255,0.85)', // Changed from 0.45 to pop against tint
+                            color: 'rgba(255,255,255,0.8)',
                             fontWeight: 400,
-                            maxWidth: '420px',
-                            marginBottom: '2.5rem',
+                            maxWidth: '550px', // More space for text
+                            marginBottom: '3rem',
                             fontFamily: '"Inter", sans-serif'
                         }}>
                             We build high-end digital experiences using 3D, motion, and visual storytelling. Everything we create is designed to be premium, consistent, and memorable.
                         </p>
 
-                        <button className="glow-btn" style={{ padding: '14px 35px', fontSize: '0.75rem' }}>
+                        <button className="glow-btn" style={{ padding: 'clamp(14px, 1vw, 20px) clamp(35px, 2.5vw, 50px)', fontSize: 'clamp(0.75rem, 0.8vw, 1rem)' }}>
                             Start a Project
                         </button>
                     </div>
 
                     {/* Right: 3D Cube Scene */}
                     <div className="hero-3d-scene" style={{
-                        flex: 1,
-                        height: '100%',
+                        flex: 1.2, // Give it more weight on large screens
+                        height: '75vh',
                         position: 'relative',
                         zIndex: 5
                     }}>
@@ -133,28 +130,17 @@ export default function Hero() {
                             </Suspense>
                         </Canvas>
                     </div>
-
-                    {/* Subtle Internal Glows */}
-                    <div style={{
-                        position: 'absolute',
-                        top: '-10%',
-                        right: '-10%',
-                        width: '40%',
-                        height: '40%',
-                        background: 'radial-gradient(circle, rgba(127, 58, 161, 0.08) 0%, transparent 70%)',
-                        pointerEvents: 'none'
-                    }}></div>
                 </motion.div>
 
                 <style>{`
                     @media (max-width: 991px) {
                         .hero-3d-scene { display: none; }
-                        .glass-hero-card { flex-direction: column !important; justify-content: center !important; }
+                        .hero-container > div { flex-direction: column !important; justify-content: center !important; text-align: center !important; }
+                        .hero-container > div > div { alignItems: center !important; textAlign: center !important; }
                     }
 
                     @media (max-width: 768px) {
                         .hero-container { padding: 20px; }
-                        .glass-hero-card { width: 92% !important; height: 75vh !important; padding: 25px !important; margin-top: 60px !important; }
                         h1 { font-size: 2.8rem !important; }
                         p { font-size: 0.8rem !important; }
                     }

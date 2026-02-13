@@ -91,7 +91,7 @@ export default function Portfolio() {
                     </motion.div>
                 </div>
 
-                <motion.div style={{ x, display: 'flex', gap: '5vw', paddingLeft: '15vw', marginTop: '10vh' }}>
+                <motion.div style={{ x, display: 'flex', gap: '8vw', paddingLeft: 'min(15vw, 25vw)', marginTop: '10vh' }}>
                     {projects.map((project, index) => (
                         <ProjectCard key={project.id} project={project} index={index} />
                     ))}

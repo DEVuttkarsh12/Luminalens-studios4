@@ -67,8 +67,8 @@ export default function Services() {
 
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-                    gap: '40px',
+                    gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
+                    gap: 'clamp(40px, 4vw, 80px)',
                 }}>
                     {services.map((service, index) => (
                         <motion.div
