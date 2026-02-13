@@ -20,15 +20,15 @@ const INNER_SIZE = 0.72;
 function MiniCube({ position, color }) {
     return (
         <group position={position}>
-            {/* Outer Glass Shell - Matte finish */}
+            {/* Outer Glass Shell - Polished frost finish */}
             <RoundedBox args={[OUTER_SIZE, OUTER_SIZE, OUTER_SIZE]} radius={0.08} smoothness={4}>
                 <meshPhysicalMaterial
-                    color="#a885f7" // Muted purple tint instead of bright lavender
+                    color="#a885f7" // Muted purple tint
                     transparent
-                    opacity={0.12} // Slightly more transparent
-                    metalness={0.05}
-                    roughness={0.5} // Keep frost
-                    transmission={0.7} // More transmission
+                    opacity={0.12}
+                    metalness={0.12} // Slightly increased to catch highlights
+                    roughness={0.28} // Reduced for "polished" look
+                    transmission={0.7}
                     thickness={0.8}
                 />
                 {/* Branded edge highlight */}
@@ -38,15 +38,17 @@ function MiniCube({ position, color }) {
                 </lineSegments>
             </RoundedBox>
 
-            {/* Inner Metallic Silver Core - Matte Finish */}
+            {/* Inner Metallic Core - Sophisticated Satin Finish */}
             <RoundedBox args={[INNER_SIZE, INNER_SIZE, INNER_SIZE]} radius={0.12} smoothness={4}>
-                <meshStandardMaterial
+                <meshPhysicalMaterial
                     color={color}
                     emissive={color}
-                    emissiveIntensity={0.1} // Subtle self-glow to make color pop without shine
-                    metalness={0.5} // Reduced for matte
-                    roughness={0.65} // Increased for matte
-                    envMapIntensity={1.5}
+                    emissiveIntensity={0.1}
+                    metalness={0.85} // High metalness
+                    roughness={0.38} // Medium roughness for satin/brushed look
+                    clearcoat={0.2} // Subtle extra layer of depth
+                    clearcoatRoughness={0.4}
+                    envMapIntensity={2.5} // Boost environmental reflections
                 />
             </RoundedBox>
         </group>
