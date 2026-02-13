@@ -3,9 +3,9 @@ import { Mail, Phone, Globe } from 'lucide-react';
 
 export default function Contact() {
     const contactInfo = [
-        { icon: <Mail size={20} />, text: 'hello@studio-x.creative', label: 'Email' },
+        { icon: <Mail size={20} />, text: 'hello@luminalens.studio', label: 'Email' },
         { icon: <Phone size={20} />, text: '+91 98765 43210', label: 'Phone' },
-        { icon: <Globe size={20} />, text: 'www.studio-x.creative', label: 'Website' },
+        { icon: <Globe size={20} />, text: 'www.luminalens.studio', label: 'Website' },
     ];
 
     return (
@@ -90,7 +90,7 @@ export default function Contact() {
                                 margin: '0 auto 25px auto'
                             }}>
                                 <img
-                                    src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=mailto:hello@studio-x.creative&bgcolor=ffffff&color=000000"
+                                    src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=mailto:hello@luminalens.studio&bgcolor=ffffff&color=000000"
                                     alt="Official Contact QR"
                                     style={{ width: '100%', height: '100%' }}
                                 />

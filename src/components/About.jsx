@@ -58,10 +58,10 @@ export default function About() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <span style={{ color: 'var(--primary-glow)', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', fontSize: '0.9rem' }}>
-
+                        <span style={{ color: 'var(--primary-glow)', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', fontSize: '0.9rem', display: 'block', marginBottom: '1rem' }}>
+                            The Collective
                         </span>
-                        <h2 className="text-gradient-purple" style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', marginTop: '1rem', marginBottom: '2rem', fontWeight: 900 }}>Who We Work<br />As.</h2>
+                        <h2 className="text-gradient-purple" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', marginTop: '1rem', marginBottom: '2rem', fontWeight: 900 }}>Who We <br />Are.</h2>
                         <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
                             We’re a multidisciplinary design company bringing together designers, visual artists, and creative thinkers. We work closely, move with intention, and focus on building work that feels clear and consistent across platforms.
 
@@ -78,7 +78,7 @@ export default function About() {
                             </div>
                             <div>
                                 <h4 style={{ fontSize: '2.5rem', color: 'var(--primary-glow)', fontWeight: 800 }}>5+</h4>
-                                <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', textTransform: 'uppercase', fontWeight: 600 }}>ndustries partnered with</p>
+                                <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', textTransform: 'uppercase', fontWeight: 600 }}>Industries partnered with</p>
                             </div>
                         </div>
                     </motion.div>

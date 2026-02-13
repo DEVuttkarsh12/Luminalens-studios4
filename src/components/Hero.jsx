@@ -76,7 +76,8 @@ export default function Hero() {
                             textTransform: 'uppercase',
                             marginBottom: '1.5rem',
                             fontFamily: '"Inter", sans-serif',
-                            color: 'rgba(255,255,255,0.7)'
+                            color: 'rgba(255,255,255,0.7)',
+                            display: 'block'
                         }}>
                             Capabilities / Creative Studio
                         </span>

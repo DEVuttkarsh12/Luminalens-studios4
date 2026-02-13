@@ -56,7 +56,8 @@ export default function Services() {
                         fontWeight: 800,
                         letterSpacing: '0.6em',
                         textTransform: 'uppercase',
-                        opacity: 0.8
+                        opacity: 0.8,
+                        display: 'block'
                     }}>
                         Capabilities
                     </span>

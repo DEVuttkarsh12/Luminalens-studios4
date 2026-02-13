@@ -219,7 +219,7 @@ function ProjectCard({ project, index }) {
                     zIndex: 1,
                     pointerEvents: 'none'
                 }}>
-                    0{index + 1}
+                    {index + 1 < 10 ? `0${index + 1}` : index + 1}
                 </div>
             </motion.div>
         </div>
