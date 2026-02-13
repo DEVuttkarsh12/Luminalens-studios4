@@ -162,24 +162,6 @@ export default function RubiksCube() {
                     </group>
                 ))}
 
-                {/* Super Nebula Core - Layered Volumetric Blow (Brighter) */}
-                <group>
-                    {/* Inner intense glow */}
-                    <mesh>
-                        <sphereGeometry args={[1.2, 32, 32]} />
-                        <meshBasicMaterial color="#ffffff" transparent opacity={0.15} />
-                    </mesh>
-                    {/* outer atmospheric purple glow */}
-                    <mesh>
-                        <sphereGeometry args={[1.8, 32, 32]} />
-                        <meshBasicMaterial color="#c4b1f1" transparent opacity={0.08} />
-                    </mesh>
-                    {/* Soft boundary glow */}
-                    <mesh>
-                        <sphereGeometry args={[2.5, 32, 32]} />
-                        <meshBasicMaterial color="#a855f7" transparent opacity={0.04} />
-                    </mesh>
-                </group>
             </group>
         </Float>
     );
