@@ -13,36 +13,40 @@ const GLASS_MATERIAL = {
     thickness: 0.5,
 };
 
-function MiniCube({ position }) {
+const SPACING = 0.78;
+const OUTER_SIZE = 0.76;
+const INNER_SIZE = 0.72;
+
+function MiniCube({ position, color }) {
     return (
         <group position={position}>
-            {/* Outer Glass Shell - Enhanced visibility */}
-            <RoundedBox args={[0.92, 0.92, 0.92]} radius={0.08} smoothness={4}>
+            {/* Outer Glass Shell - Matte finish */}
+            <RoundedBox args={[OUTER_SIZE, OUTER_SIZE, OUTER_SIZE]} radius={0.08} smoothness={4}>
                 <meshPhysicalMaterial
-                    color="#d8c8ff" // Brighter lavender
+                    color="#a885f7" // Muted purple tint instead of bright lavender
                     transparent
-                    opacity={0.1} // Increased from 0.08
-                    metalness={0.2}
-                    roughness={0.1}
-                    transmission={0.8}
-                    thickness={1}
+                    opacity={0.12} // Slightly more transparent
+                    metalness={0.05}
+                    roughness={0.5} // Keep frost
+                    transmission={0.7} // More transmission
+                    thickness={0.8}
                 />
                 {/* Branded edge highlight */}
                 <lineSegments>
-                    <edgesGeometry args={[new THREE.BoxGeometry(0.92, 0.92, 0.92)]} />
+                    <edgesGeometry args={[new THREE.BoxGeometry(OUTER_SIZE, OUTER_SIZE, OUTER_SIZE)]} />
                     <lineBasicMaterial color="#c4b1f1" toneMapped={false} linewidth={1} transparent opacity={0.3} />
                 </lineSegments>
             </RoundedBox>
 
-            {/* Inner Metallic Silver Core - Luminous Finish */}
-            <RoundedBox args={[0.7, 0.7, 0.7]} radius={0.12} smoothness={4}>
+            {/* Inner Metallic Silver Core - Matte Finish */}
+            <RoundedBox args={[INNER_SIZE, INNER_SIZE, INNER_SIZE]} radius={0.12} smoothness={4}>
                 <meshStandardMaterial
-                    color="#ffffff" // Pure white base
-                    emissive="#ffffff"
-                    emissiveIntensity={0.2} // Subtle self-glow to prevent "black" look
-                    metalness={0.9}
-                    roughness={0.05}
-                    envMapIntensity={2}
+                    color={color}
+                    emissive={color}
+                    emissiveIntensity={0.1} // Subtle self-glow to make color pop without shine
+                    metalness={0.5} // Reduced for matte
+                    roughness={0.65} // Increased for matte
+                    envMapIntensity={1.5}
                 />
             </RoundedBox>
         </group>
@@ -55,13 +59,16 @@ export default function RubiksCube() {
 
     // Generate cubes with consistent glass look
     const cubes = useMemo(() => {
+        // Gradient-synced palette from Hero text (#4a178d -> #c4b1f1)
+        const palette = ['#4a178d', '#6a3ab1', '#8e63d3', '#a885f7', '#c4b1f1'];
         const c = [];
         for (let x = -1; x <= 1; x++) {
             for (let y = -1; y <= 1; y++) {
                 for (let z = -1; z <= 1; z++) {
                     c.push({
-                        pos: [x * 0.91, y * 0.91, z * 0.91],
-                        initialPos: new THREE.Vector3(x * 0.91, y * 0.91, z * 0.91)
+                        pos: [x * SPACING, y * SPACING, z * SPACING],
+                        initialPos: new THREE.Vector3(x * SPACING, y * SPACING, z * SPACING),
+                        color: palette[Math.floor(Math.random() * palette.length)]
                     });
                 }
             }
@@ -131,7 +138,7 @@ export default function RubiksCube() {
             // If cube is in the active slice, rotate it
             const val = axis === 'x' ? cube.initialPos.x : axis === 'y' ? cube.initialPos.y : cube.initialPos.z;
 
-            if (Math.abs(val - index * 0.91) < 0.1) {
+            if (Math.abs(val - index * SPACING) < 0.1) {
                 // Apply rotation based on axis
                 if (axis === 'x') ref.rotation.x = currentAngle.current;
                 if (axis === 'y') ref.rotation.y = currentAngle.current;
@@ -151,7 +158,7 @@ export default function RubiksCube() {
             <group ref={groupRef}>
                 {cubes.map((cube, i) => (
                     <group key={i} ref={el => cubeRefs.current[i] = el}>
-                        <MiniCube position={[0, 0, 0]} />
+                        <MiniCube position={[0, 0, 0]} color={cube.color} />
                     </group>
                 ))}
 
