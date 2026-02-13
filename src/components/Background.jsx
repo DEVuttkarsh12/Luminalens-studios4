@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
-import videoSrc from '../assets/lls-logo.mp4';
+import videoSrc from '../assets/short logo animation (1).mp4';
 
 function MovingStars() {
     const ref = useRef();

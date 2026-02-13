@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import videoSrc from '../assets/lls-logo.mp4';
+import videoSrc from '../assets/short logo animation (1).mp4';
 
 export default function IntroVideo({ onFinished }) {
     const videoRef = useRef(null);
