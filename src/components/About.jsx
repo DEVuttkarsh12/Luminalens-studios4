@@ -61,7 +61,7 @@ export default function About() {
                         <span style={{ color: 'var(--primary-glow)', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', fontSize: '0.9rem' }}>
 
                         </span>
-                        <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', marginTop: '1rem', marginBottom: '2rem', fontWeight: 900 }}>Who We Work<br />As.</h2>
+                        <h2 className="text-gradient-purple" style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', marginTop: '1rem', marginBottom: '2rem', fontWeight: 900 }}>Who We Work<br />As.</h2>
                         <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
                             We’re a multidisciplinary design company bringing together designers, visual artists, and creative thinkers. We work closely, move with intention, and focus on building work that feels clear and consistent across platforms.
 

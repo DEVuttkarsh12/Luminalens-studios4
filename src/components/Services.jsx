@@ -41,73 +41,98 @@ const services = [
 
 export default function Services() {
     return (
-        <section id="services" className="section">
+        <section id="services" className="section" style={{ background: 'transparent', position: 'relative', zIndex: 1 }}>
             <div className="container">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    style={{ marginBottom: '5rem', textAlign: 'center' }}
+                    style={{ marginBottom: '6rem', textAlign: 'center' }}
                 >
-                    <span style={{ color: 'var(--primary-glow)', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.5em', textTransform: 'uppercase' }}>Capabilities</span>
-                    <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', marginTop: '1rem', fontWeight: 900 }}>What We Do Best</h2>
+                    <span style={{
+                        color: 'var(--primary-glow)',
+                        fontSize: '0.75rem',
+                        fontWeight: 800,
+                        letterSpacing: '0.6em',
+                        textTransform: 'uppercase',
+                        opacity: 0.8
+                    }}>
+                        Capabilities
+                    </span>
+                    <h2 className="text-gradient-purple" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)', marginTop: '1.5rem', fontWeight: 900, letterSpacing: '-0.02em' }}>
+                        What We Do Best
+                    </h2>
                 </motion.div>
 
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-                    gap: '30px',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+                    gap: '40px',
                 }}>
                     {services.map((service, index) => (
                         <motion.div
                             key={service.title}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            whileHover={{
-                                y: -10,
-                                backgroundColor: 'rgba(255, 255, 255, 0.06)',
-                                transition: { duration: 0.4, ease: "easeOut" }
-                            }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="glass-card-premium"
+                            transition={{ duration: 0.7, delay: index * 0.05 }}
+                            className="glass-service-card"
                             style={{
-                                padding: '40px',
+                                padding: '50px 40px',
                                 display: 'flex',
                                 flexDirection: 'column',
-                                gap: '25px',
-                                minHeight: '320px',
-                                justifyContent: 'center',
-                                cursor: 'pointer'
+                                gap: '30px',
+                                minHeight: '340px',
+                                justifyContent: 'center'
                             }}
                         >
                             <div style={{
-                                color: 'var(--primary-glow)',
-                                background: 'rgba(127, 58, 161, 0.1)',
-                                width: '60px',
-                                height: '60px',
-                                borderRadius: '12px',
+                                position: 'absolute',
+                                top: '40px',
+                                right: '40px',
+                                fontSize: '4.5rem',
+                                fontWeight: 900,
+                                opacity: 0.06, // Slightly more visible for the rich background
+                                fontVariantNumeric: 'tabular-nums',
+                                color: '#fff',
+                                fontFamily: '"Outfit", sans-serif'
+                            }}>
+                                {index + 1 < 10 ? `0${index + 1}` : index + 1}
+                            </div>
+
+                            <div style={{
+                                color: '#fff',
+                                width: '64px',
+                                height: '64px',
+                                borderRadius: '16px',
                                 display: 'flex',
                                 alignItems: 'center',
-                                justifyContent: 'center'
+                                justifyContent: 'center',
+                                border: '1px solid rgba(255, 255, 255, 0.15)',
+                                background: 'rgba(255, 255, 255, 0.03)' // Very subtle for base
                             }}>
                                 {service.icon}
                             </div>
-                            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, letterSpacing: '-0.01em', lineHeight: 1.2 }}>{service.title}</h3>
-                            <p style={{ color: 'var(--text-muted)', lineHeight: 1.6, fontSize: '0.95rem' }}>{service.desc}</p>
 
-                            <div style={{
-                                position: 'absolute',
-                                top: '30px',
-                                right: '30px',
-                                fontSize: '3rem',
-                                fontWeight: 900,
-                                opacity: 0.03,
-                                fontVariantNumeric: 'tabular-nums',
-                                color: '#fff'
-                            }}>
-                                {index + 1 < 10 ? `0${index + 1}` : index + 1}
+                            <div>
+                                <h3 className="text-gradient-purple" style={{
+                                    fontSize: '1.6rem',
+                                    fontWeight: 800,
+                                    letterSpacing: '-0.01em',
+                                    lineHeight: 1.2,
+                                    marginBottom: '15px'
+                                }}>
+                                    {service.title}
+                                </h3>
+                                <p style={{
+                                    color: 'rgba(255, 255, 255, 0.5)',
+                                    lineHeight: 1.7,
+                                    fontSize: '0.98rem',
+                                    fontWeight: 400
+                                }}>
+                                    {service.desc}
+                                </p>
                             </div>
                         </motion.div>
                     ))}

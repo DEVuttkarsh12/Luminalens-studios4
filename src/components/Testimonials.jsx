@@ -46,7 +46,7 @@ export default function Testimonials() {
                     }}>
                         Client Feedback
                     </span>
-                    <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', marginBottom: '1.5rem', fontWeight: 900 }}>Testimonials</h2>
+                    <h2 className="text-gradient-purple" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', marginBottom: '1.5rem', fontWeight: 900 }}>Testimonials</h2>
                     <div style={{ width: '40px', height: '2px', background: 'var(--accent-gradient)', margin: '0 auto' }}></div>
                 </motion.div>
 

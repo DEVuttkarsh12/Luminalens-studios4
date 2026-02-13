@@ -39,7 +39,7 @@ export default function Navbar() {
                 justifyContent: 'space-between'
             }}>
                 <div style={{ fontWeight: 900, fontSize: '1.2rem', color: '#fff', letterSpacing: '1px', textTransform: 'uppercase' }}>
-                    <span style={{ color: 'var(--primary-glow)', fontWeight: 800 }}>Luminalens</span> Studios
+                    <span className="text-gradient-purple" style={{ fontWeight: 800 }}>Luminalens</span> Studios
                 </div>
 
                 {/* Desktop Menu */}

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
+import { Environment } from '@react-three/drei';
 import RubiksCube from './RubiksCube';
 
 export default function Hero() {
@@ -46,25 +47,18 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.2 }}
+                    className="glass-hero-card"
                     style={{
                         width: '91%',
                         maxWidth: '1400px',
                         height: '78vh',
                         marginTop: '80px', // Create gap from fixed Navbar
-                        background: 'rgba(255, 255, 255, 0.03)',
-                        backdropFilter: 'blur(15px) saturate(140%)',
-                        WebkitBackdropFilter: 'blur(15px) saturate(140%)',
-                        border: '1px solid rgba(255, 255, 255, 0.12)',
-                        borderRadius: '24px',
                         display: 'flex',
                         flexDirection: 'row', // Side-by-side layout
                         alignItems: 'center',
                         justifyContent: 'space-between',
                         padding: 'clamp(25px, 4vw, 60px)',
-                        boxShadow: '0 30px 80px -20px rgba(0,0,0,0.4)',
-                        position: 'relative',
                         zIndex: 10,
-                        overflow: 'hidden',
                         transform: 'translateZ(0)',
                         WebkitBackfaceVisibility: 'hidden'
                     }}
@@ -82,7 +76,7 @@ export default function Hero() {
                             fontSize: '0.7rem',
                             fontWeight: 700,
                             letterSpacing: '0.5em',
-                            color: 'rgba(255,255,255,0.3)',
+                            color: 'rgba(255,255,255,0.9)', // Changed from 0.3 to pop against tint
                             textTransform: 'uppercase',
                             marginBottom: '1.2rem',
                             fontFamily: '"Inter", sans-serif'
@@ -100,18 +94,14 @@ export default function Hero() {
                             fontFamily: '"Outfit", sans-serif',
                             marginBottom: '1.5rem'
                         }}>
-                            Your Dream<br />
-                            <span style={{
-                                color: 'transparent',
-                                WebkitTextStroke: '1px rgba(255,255,255,0.2)',
-                                letterSpacing: '0.02em'
-                            }}>Our Canvas</span>
+                            Your <span className="text-gradient-purple">Dream</span><br />
+                            Our <span className="text-gradient-purple">Canvas</span>
                         </h1>
 
                         <p style={{
                             fontSize: 'clamp(0.85rem, 1.2vw, 0.95rem)',
                             lineHeight: 1.7,
-                            color: 'rgba(255,255,255,0.45)',
+                            color: 'rgba(255,255,255,0.85)', // Changed from 0.45 to pop against tint
                             fontWeight: 400,
                             maxWidth: '420px',
                             marginBottom: '2.5rem',
@@ -133,8 +123,11 @@ export default function Hero() {
                         zIndex: 5
                     }}>
                         <Canvas camera={{ position: [0, 0, 7], fov: 45 }}>
-                            <ambientLight intensity={0.5} />
-                            <pointLight position={[10, 10, 10]} intensity={1} />
+                            <ambientLight intensity={0.6} />
+                            <pointLight position={[10, 10, 10]} intensity={2.5} />
+                            <pointLight position={[-10, -10, -10]} intensity={1} color="#c4b1f1" />
+                            <spotLight position={[0, 5, 10]} angle={0.15} penumbra={1} intensity={3} />
+                            <Environment preset="city" />
                             <Suspense fallback={null}>
                                 <RubiksCube />
                             </Suspense>
@@ -156,12 +149,12 @@ export default function Hero() {
                 <style>{`
                     @media (max-width: 991px) {
                         .hero-3d-scene { display: none; }
-                        .glass-card-premium { flex-direction: column !important; justify-content: center !important; }
+                        .glass-hero-card { flex-direction: column !important; justify-content: center !important; }
                     }
 
                     @media (max-width: 768px) {
                         .hero-container { padding: 20px; }
-                        .glass-card-premium { width: 92% !important; height: 75vh !important; padding: 25px !important; margin-top: 60px !important; }
+                        .glass-hero-card { width: 92% !important; height: 75vh !important; padding: 25px !important; margin-top: 60px !important; }
                         h1 { font-size: 2.8rem !important; }
                         p { font-size: 0.8rem !important; }
                     }

@@ -18,7 +18,7 @@ export default function Contact() {
                     transition={{ duration: 0.8 }}
                     style={{ textAlign: 'center', marginBottom: '100px' }}
                 >
-                    <h2 style={{ fontSize: 'clamp(3rem, 10vw, 6.5rem)', lineHeight: 0.9, marginBottom: '2.5rem', fontWeight: 900 }}>
+                    <h2 className="text-gradient-purple" style={{ fontSize: 'clamp(3rem, 10vw, 6.5rem)', lineHeight: 0.9, marginBottom: '2.5rem', fontWeight: 900 }}>
                         Let's work <br />
                         Together.
                     </h2>

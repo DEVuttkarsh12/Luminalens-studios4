@@ -16,11 +16,11 @@ function MovingStars() {
             <Stars
                 radius={100}
                 depth={60}
-                count={8000}
+                count={12000}
                 factor={6}
-                saturation={0}
+                saturation={0.5} // Add subtle color bits
                 fade
-                speed={0.5}
+                speed={0.8}
             />
         </group>
     );

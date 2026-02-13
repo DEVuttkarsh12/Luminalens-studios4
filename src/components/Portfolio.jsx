@@ -81,10 +81,9 @@ export default function Portfolio() {
                         }}>
                             Latest Work
                         </span>
-                        <h2 style={{
+                        <h2 className="text-gradient-purple" style={{
                             fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
                             fontWeight: 900,
-                            color: '#fff',
                             lineHeight: 1
                         }}>
                             What We’ve Built
