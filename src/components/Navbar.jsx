@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logo from '../assets/LuminaL_1 (1).png';
+import lensIcon from '../assets/Lumina_Lcircle.png';
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -28,19 +30,69 @@ export default function Navbar() {
             width: '100%',
             zIndex: 1000,
             transition: 'var(--transition-smooth)',
-            padding: scrolled ? '15px 0' : '30px 0',
+            padding: scrolled ? '10px 0' : '15px 0',
+            height: scrolled ? '70px' : '90px',
             background: scrolled || mobileMenuOpen ? 'rgba(8, 8, 8, 0.98)' : 'transparent',
             backdropFilter: scrolled || mobileMenuOpen ? 'blur(20px)' : 'none',
-            borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : 'none'
+            borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : 'none',
+            display: 'flex',
+            alignItems: 'center',
+            overflow: 'visible'
         }}>
-            <div className="container" style={{
+            <div style={{
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-between'
+                justifyContent: 'space-between',
+                width: '100%',
+                padding: '0 5%' // Balanced padding for ultra-wide feel
             }}>
-                <div style={{ fontWeight: 900, fontSize: '1.2rem', color: '#fff', letterSpacing: '1px', textTransform: 'uppercase' }}>
-                    <span className="text-gradient-purple" style={{ fontWeight: 800 }}>Luminalens</span> Studios
+                <div
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    style={{
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        height: scrolled ? '60px' : '80px',
+                        transition: 'height 0.3s ease',
+                        display: 'flex',
+                        alignItems: 'center'
+                    }}
+                >
+                    <img
+                        src={logo}
+                        alt="Luminalens Studios"
+                        style={{
+                            height: '100%',
+                            width: 'auto',
+                            objectFit: 'contain',
+                            display: 'block',
+                            transform: scrolled ? 'scale(2.0) translateY(2px)' : 'scale(2.6) translateY(3px)',
+                            transformOrigin: 'left center',
+                            filter: 'brightness(1.1) contrast(1.1)'
+                        }}
+                    />
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginLeft: scrolled ? '65px' : '110px', // Re-calibrated for visual consistency
+                        transform: scrolled ? 'scale(1.1) translateY(2px)' : 'scale(1.4) translateY(3px)',
+                        opacity: 0.9
+                    }}>
+                        <img
+                            src={lensIcon}
+                            alt=""
+                            style={{
+                                height: scrolled ? '20px' : '26px',
+                                width: 'auto',
+                                objectFit: 'contain',
+                                filter: 'brightness(1.2)'
+                            }}
+                        />
+                    </div>
                 </div>
+
+                <div style={{ flex: 1 }} /> {/* Spacer to push links to the right */}
 
                 {/* Desktop Menu */}
                 <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '50px' }}>

@@ -107,9 +107,9 @@ export default function Loader({ onFinished }) {
                             initial={{ opacity: 0, y: 5 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -5 }}
+                            className="heading-font"
                             style={{
-                                fontSize: '0.65rem',
-                                fontWeight: 900,
+                                fontSize: '1rem',
                                 letterSpacing: '0.3em',
                                 textTransform: 'uppercase',
                                 color: 'rgba(255,255,255,0.8)'

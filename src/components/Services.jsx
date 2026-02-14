@@ -78,7 +78,7 @@ export default function Services() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.7, delay: index * 0.05 }}
-                            className="glass-service-card"
+                            className="glass-service-card glass-shimmer"
                             style={{
                                 padding: '50px 40px',
                                 display: 'flex',
@@ -93,11 +93,10 @@ export default function Services() {
                                 top: '40px',
                                 right: '40px',
                                 fontSize: '4.5rem',
-                                fontWeight: 900,
+                                fontWeight: 400,
                                 opacity: 0.06, // Slightly more visible for the rich background
                                 fontVariantNumeric: 'tabular-nums',
-                                color: '#fff',
-                                fontFamily: '"Outfit", sans-serif'
+                                color: '#fff'
                             }}>
                                 {index + 1 < 10 ? `0${index + 1}` : index + 1}
                             </div>

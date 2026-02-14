@@ -84,12 +84,11 @@ export default function Hero() {
 
                         <h1 className="text-premium" style={{
                             fontSize: 'clamp(2rem, 6vw, 6rem)', // Increased upper bound
-                            lineHeight: 1,
-                            fontWeight: 900,
+                            lineHeight: 0.9, // Tighter for Bebas
+                            fontWeight: 400, // Bebas doesn't need 900
                             color: '#fff',
                             textTransform: 'uppercase',
-                            letterSpacing: '-0.02em',
-                            fontFamily: '"Outfit", sans-serif',
+                            letterSpacing: '0.04em',
                             marginBottom: '2rem'
                         }}>
                             Your <span className="text-gradient-purple">Dream</span><br />
@@ -108,7 +107,7 @@ export default function Hero() {
                             We build high-end digital experiences using 3D, motion, and visual storytelling. Everything we create is designed to be premium, consistent, and memorable.
                         </p>
 
-                        <button className="glow-btn" style={{ padding: 'clamp(14px, 1vw, 20px) clamp(35px, 2.5vw, 50px)', fontSize: 'clamp(0.75rem, 0.8vw, 1rem)' }}>
+                        <button className="glow-btn magnetic-btn" style={{ padding: 'clamp(14px, 1vw, 20px) clamp(35px, 2.5vw, 50px)', fontSize: 'clamp(0.75rem, 0.8vw, 1rem)' }}>
                             Start a Project
                         </button>
                     </div>
