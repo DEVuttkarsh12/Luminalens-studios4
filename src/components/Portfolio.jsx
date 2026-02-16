@@ -30,6 +30,13 @@ const projects = [
         description: 'Breaking the laws of virtual reality with distorted geometries and digital anomalies, creating an immersive, unstable environment.',
         img: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2070&auto=format&fit=crop'
     },
+    {
+        id: 5,
+        title: 'Product Animations',
+        category: 'Motion Design / 3D',
+        description: 'Dynamic product showcases that blend high-end 3D rendering with seamless motion, highlighting craft and functionality in every frame.',
+        img: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1974&auto=format&fit=crop'
+    },
 ];
 
 export default function Portfolio() {
@@ -38,7 +45,7 @@ export default function Portfolio() {
         target: targetRef,
     });
 
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-65%"]); // Refined percentage for 4 items
+    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-72%"]); // Re-calibrated for 5 items to prevent over-scroll
 
     return (
         <section ref={targetRef} id="work" className="section" style={{
