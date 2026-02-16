@@ -189,7 +189,6 @@ function ProjectCard({ project, index }) {
                     </span>
                     <h3 className="text-premium" style={{
                         fontSize: 'clamp(2.5rem, 6vw, 4rem)',
-                        fontWeight: 900,
                         marginBottom: '20px',
                         color: '#fff'
                     }}>

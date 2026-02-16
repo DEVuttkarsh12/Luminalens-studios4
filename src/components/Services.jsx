@@ -118,7 +118,7 @@ export default function Services() {
                             <div>
                                 <h3 className="text-gradient-purple" style={{
                                     fontSize: '1.6rem',
-                                    fontWeight: 800,
+                                    fontWeight: 900,
                                     letterSpacing: '-0.01em',
                                     lineHeight: 1.2,
                                     marginBottom: '15px'

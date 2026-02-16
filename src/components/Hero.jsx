@@ -81,14 +81,13 @@ export default function Hero() {
                         }}>
                             Capabilities / Creative Studio
                         </span>
-
+                        <div style={{ display: 'flex', flexDirection: 'column' }}></div>
                         <h1 className="text-premium" style={{
-                            fontSize: 'clamp(2rem, 6vw, 6rem)', // Increased upper bound
-                            lineHeight: 0.9, // Tighter for Bebas
-                            fontWeight: 400, // Bebas doesn't need 900
+                            fontSize: 'clamp(2rem, 6vw, 4.8rem)',
+                            lineHeight: 1.1,
+                            fontWeight: 900,
                             color: '#fff',
                             textTransform: 'uppercase',
-                            letterSpacing: '0.04em',
                             marginBottom: '2rem'
                         }}>
                             Your <span className="text-gradient-purple">Dream</span><br />
