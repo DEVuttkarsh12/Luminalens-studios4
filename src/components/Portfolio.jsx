@@ -1,45 +1,72 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import ProjectModal from './ProjectModal';
 
 const projects = [
     {
         id: 1,
         title: 'Neon Cyberpunk',
         category: '3D Illustration',
-        description: 'A deep dive into futuristic urban landscapes, blending neon aesthetics with complex structural modeling for a premium sci-fi feel.',
-        img: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop'
+        description: 'A deep dive into futuristic urban landscapes, blending neon aesthetics with complex structural modeling for a premium sci-fi feel. This project explores the synergy between light and geometry in a dystopian future.',
+        img: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop',
+        images: [
+            'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1614728263952-84ea256f9679?q=80&w=1954&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2070&auto=format&fit=crop'
+        ]
     },
     {
         id: 2,
         title: 'Organic Mech',
         category: 'Character Design',
-        description: 'Exploring the intersection of biology and machinery. This project focuses on intricate detailing and realistic surface textures of synthetic organisms.',
-        img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop'
+        description: 'Exploring the intersection of biology and machinery. This project focuses on intricate detailing and realistic surface textures of synthetic organisms. Each character is a testament to the harmony of form and function.',
+        img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop',
+        images: [
+            'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1974&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop'
+        ]
     },
     {
         id: 3,
         title: 'Void Ritual',
         category: 'VFX / CGI',
-        description: 'A cinematic visual effect sequence capturing the essence of dark energy and abstract motion through custom particle systems.',
-        img: 'https://images.unsplash.com/photo-1614728263952-84ea256f9679?q=80&w=1954&auto=format&fit=crop'
+        description: 'A cinematic visual effect sequence capturing the essence of dark energy and abstract motion through custom particle systems. Experience the ethereal beauty of the void through simulated physics and light.',
+        img: 'https://images.unsplash.com/photo-1614728263952-84ea256f9679?q=80&w=1954&auto=format&fit=crop',
+        images: [
+            'https://images.unsplash.com/photo-1614728263952-84ea256f9679?q=80&w=1954&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2070&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop'
+        ]
     },
     {
         id: 4,
         title: 'Glitch Dimension',
         category: '3D Environment',
-        description: 'Breaking the laws of virtual reality with distorted geometries and digital anomalies, creating an immersive, unstable environment.',
-        img: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2070&auto=format&fit=crop'
+        description: 'Breaking the laws of virtual reality with distorted geometries and digital anomalies, creating an immersive, unstable environment. This project pushes the boundaries of perception in a digital landscape.',
+        img: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2070&auto=format&fit=crop',
+        images: [
+            'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2070&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1974&auto=format&fit=crop'
+        ]
     },
     {
         id: 5,
         title: 'Product Animations',
         category: 'Motion Design / 3D',
-        description: 'Dynamic product showcases that blend high-end 3D rendering with seamless motion, highlighting craft and functionality in every frame.',
-        img: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1974&auto=format&fit=crop'
+        description: 'Dynamic product showcases that blend high-end 3D rendering with seamless motion, highlighting craft and functionality in every frame. Perfect for modern branding and luxury product reveals.',
+        img: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1974&auto=format&fit=crop',
+        images: [
+            'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1974&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1614728263952-84ea256f9679?q=80&w=1954&auto=format&fit=crop'
+        ]
     },
 ];
 
 export default function Portfolio() {
+    const [selectedProject, setSelectedProject] = useState(null);
     const targetRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: targetRef,
@@ -100,11 +127,22 @@ export default function Portfolio() {
 
                 <motion.div style={{ x, display: 'flex', gap: '8vw', paddingLeft: 'min(15vw, 25vw)', marginTop: '10vh' }}>
                     {projects.map((project, index) => (
-                        <ProjectCard key={project.id} project={project} index={index} />
+                        <ProjectCard
+                            key={project.id}
+                            project={project}
+                            index={index}
+                            onClick={() => setSelectedProject(project)}
+                        />
                     ))}
                     {/* Extra space at the end */}
                     <div style={{ minWidth: '20vw' }}></div>
                 </motion.div>
+
+                <ProjectModal
+                    project={selectedProject}
+                    isOpen={!!selectedProject}
+                    onClose={() => setSelectedProject(null)}
+                />
             </div>
 
             <style>{`
@@ -118,7 +156,7 @@ export default function Portfolio() {
     );
 }
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project, index, onClick }) {
     const cardRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: cardRef,
@@ -141,6 +179,7 @@ function ProjectCard({ project, index }) {
                 marginTop: '15vh',
                 cursor: 'pointer'
             }}
+            onClick={onClick}
         >
             <motion.div
                 whileHover={{ scale: 1.01 }}
