@@ -2,29 +2,54 @@ import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import ProjectModal from './ProjectModal';
 
+// Local asset imports
+import Cyber1 from '../assets/character design/Cyber_1.png';
+import Chap1 from '../assets/character design/Chap_1.png';
+import Vehicle1 from '../assets/3d enviroment/OKAYYYY_666.png';
+import Vehicle2 from '../assets/3d enviroment/SS1_POST.png';
+import Props1 from '../assets/3d animation/1_OldTemple.jpg';
+import Props2 from '../assets/3d animation/Hell_2.png';
+import Product1 from '../assets/product animation adn renders/Product_Study.png';
+import Product2 from '../assets/product animation adn renders/2_FINAL_chair render.png';
+import Product3 from '../assets/product animation adn renders/C1.png';
+
 const projects = [
     {
         id: 1,
-        title: 'Neon Cyberpunk',
-        category: '3D Illustration',
-        description: 'A deep dive into futuristic urban landscapes, blending neon aesthetics with complex structural modeling for a premium sci-fi feel. This project explores the synergy between light and geometry in a dystopian future.',
-        img: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop',
-        images: [
-            'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1614728263952-84ea256f9679?q=80&w=1954&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2070&auto=format&fit=crop'
+        title: '3D Objects & Props',
+        category: '3D Objects / Props',
+        description: 'Detailed 3D prop modeling and environment assets, showcasing high-fidelity textures and complex structural design from ancient relics to futuristic artifacts.',
+        img: Props1,
+        slides: [
+            {
+                src: Props1,
+                title: 'The Old Temple',
+                description: 'An atmospheric study of ancient architecture. This piece focused on modular environment design, stone textures, and dramatic lighting to evoke a sense of history and mystery.'
+            },
+            {
+                src: Props2,
+                title: 'Infernal Gate — Prop Design',
+                description: 'A dark, high-detail prop design exploring aggressive silhouettes and emissive material effects. This artifact was created to serve as a focal point in a cinematic fantasy environment.'
+            }
         ]
     },
     {
         id: 2,
         title: 'Organic Mech',
         category: 'Character Design',
-        description: 'Exploring the intersection of biology and machinery. This project focuses on intricate detailing and realistic surface textures of synthetic organisms. Each character is a testament to the harmony of form and function.',
-        img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop',
-        images: [
-            'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1974&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop'
+        description: 'Exploring the intersection of biology and machinery through meticulously crafted characters that blur the line between organic and synthetic.',
+        img: Cyber1,
+        slides: [
+            {
+                src: Cyber1,
+                title: 'Cyberpunk Enforcer',
+                description: 'A heavily armoured street enforcer designed for the neon-lit underbelly of a dystopian megacity. Every plate and joint was sculpted to convey raw mechanical power fused with organic musculature.'
+            },
+            {
+                src: Chap1,
+                title: 'Chap — Retro Mech',
+                description: 'A retro-futuristic mech character blending vintage industrial aesthetics with modern rendering techniques. Chap bridges the gap between nostalgia and cutting-edge 3D artistry.'
+            }
         ]
     },
     {
@@ -41,26 +66,45 @@ const projects = [
     },
     {
         id: 4,
-        title: 'Glitch Dimension',
-        category: '3D Environment',
-        description: 'Breaking the laws of virtual reality with distorted geometries and digital anomalies, creating an immersive, unstable environment. This project pushes the boundaries of perception in a digital landscape.',
-        img: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2070&auto=format&fit=crop',
-        images: [
-            'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2070&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1974&auto=format&fit=crop'
+        title: 'Futuristic Vehicles',
+        category: '3D Vehicles / Environments',
+        description: 'High-fidelity 3D modeling and rendering of futuristic vehicles integrated into complex, atmospheric environments. This project focuses on the synergy between hard-surface modeling and cinematic lighting.',
+        img: Vehicle2,
+        slides: [
+            {
+                src: Vehicle1,
+                title: 'Interceptor — Concept Vehicle',
+                description: 'A high-speed interceptor designed for urban pursuit. This piece explores intricate mechanical detailing and material realism, showcasing a blend of aggressive aerodynamics and functional engineering.'
+            },
+            {
+                src: Vehicle2,
+                title: 'The Outpost — Environment',
+                description: 'A cinematic wide shot featuring the Interceptor stationed at a remote industrial outpost. This scene demonstrates advanced environmental storytelling through atmospheric fog, lighting, and texture work.'
+            }
         ]
     },
     {
         id: 5,
-        title: 'Product Animations',
+        title: 'Product Art & Animation',
         category: 'Motion Design / 3D',
-        description: 'Dynamic product showcases that blend high-end 3D rendering with seamless motion, highlighting craft and functionality in every frame. Perfect for modern branding and luxury product reveals.',
-        img: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1974&auto=format&fit=crop',
-        images: [
-            'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1974&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1614728263952-84ea256f9679?q=80&w=1954&auto=format&fit=crop'
+        description: 'Premium 3D product renders and animations focusing on elegant forms, realistic materials, and cinematic presentation. This project highlights the precision of 3D craft in modern marketing.',
+        img: Product2,
+        slides: [
+            {
+                src: Product1,
+                title: 'Abstract Aesthetics',
+                description: 'An exploration of abstract forms and procedural materials. This render captures the interplay between complex geometry and refractive light in a minimalist composition.'
+            },
+            {
+                src: Product2,
+                title: 'Premium Lounge Chair',
+                description: 'A photorealistic product render emphasizing material tactile quality—from the fine leather grain to the brushed metal frame. Crafted for high-end furniture visualization.'
+            },
+            {
+                src: Product3,
+                title: 'Minimalist Device Study',
+                description: 'A sleek, clean study of a futuristic electronic device. This piece focuses on subtle curved surfaces, precise parting lines, and soft, studio-quality lighting.'
+            }
         ]
     },
 ];
@@ -224,12 +268,13 @@ function ProjectCard({ project, index, onClick }) {
                     zIndex: 2
                 }}>
                     <span style={{
-                        color: 'rgba(255,255,255,0.5)',
-                        fontSize: '0.8rem',
+                        color: '#fff',
+                        fontSize: '0.95rem',
                         fontWeight: 700,
                         letterSpacing: '0.4em',
-                        marginBottom: '15px',
-                        textTransform: 'uppercase'
+                        marginBottom: '10px',
+                        textTransform: 'uppercase',
+                        opacity: 0.9
                     }}>
                         {project.category}
                     </span>
