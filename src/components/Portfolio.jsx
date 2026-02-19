@@ -215,21 +215,39 @@ export default function Portfolio() {
 
             <style>{`
                 @media (max-width: 768px) {
-                    #work { height: auto !important; padding: 100px 0 !important; }
+                    #work { height: auto !important; padding: 120px 0 80px 0 !important; }
                     #work > div { position: relative !important; height: auto !important; display: block !important; overflow: visible !important; }
                     .horizontal-row { 
                         flex-direction: column !important; 
                         padding: 0 5% !important; 
                         gap: 20px !important; 
                         transform: none !important; 
-                        margin-top: 15vh !important;
+                        margin-top: 20px !important;
+                    }
+                    .horizontal-row + div { display: none; } /* Hide the extra spacer on mobile */
+                    
+                    /* Fix heading overlap */
+                    .container[style*="position: 'absolute'"] {
+                        position: relative !important;
+                        top: 0 !important;
+                        left: 0 !important;
+                        transform: none !important;
+                        margin-bottom: 60px !important;
+                        padding: 0 20px !important;
                     }
                 }
 
                 @media (max-width: 480px) {
+                    #work { padding: 100px 0 60px 0 !important; }
                     .horizontal-row {
-                        margin-top: 10vh !important;
+                        margin-top: 10px !important;
                         gap: 25px !important;
+                    }
+                    .container[style*="position: 'absolute'"] {
+                        margin-bottom: 40px !important;
+                    }
+                    .container[style*="position: 'absolute'"] h2 {
+                        font-size: 2.8rem !important;
                     }
                 }
             `}</style>

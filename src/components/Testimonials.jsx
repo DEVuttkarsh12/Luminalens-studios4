@@ -54,7 +54,10 @@ export default function Testimonials() {
                     display: 'grid',
                     gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(250px, 90vw, 360px), 1fr))',
                     gap: '20px',
-                    padding: '0 5px'
+                    padding: '0 10px',
+                    justifyContent: 'center',
+                    justifyItems: 'center',
+                    width: '100%'
                 }}>
                     {testimonials.map((t, index) => (
                         <motion.div

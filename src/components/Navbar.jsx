@@ -210,14 +210,14 @@ export default function Navbar() {
 
                 @media (max-width: 480px) {
                     .nav-logo-img {
-                        transform: scale(1.3) translateY(2px) !important;
+                        transform: scale(2.0) translateY(2px) !important;
                     }
                     .nav-lens-icon {
-                        margin-left: 35px !important;
-                        transform: scale(0.65) translateY(2px) !important;
+                        margin-left: 45px !important;
+                        transform: scale(0.9) translateY(2px) !important;
                     }
-                    .nav-logo-container { height: 40px !important; }
-                    nav { height: 65px !important; }
+                    .nav-logo-container { height: 50px !important; }
+                    nav { height: 75px !important; }
                 }
             `}</style>
         </nav >
