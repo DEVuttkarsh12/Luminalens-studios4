@@ -35,7 +35,7 @@ export default function Contact() {
 
                 <div className="contact-grid" style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
                     gap: 'clamp(30px, 5vw, 80px)',
                     alignItems: 'start'
                 }}>
@@ -241,14 +241,23 @@ export function Footer() {
                     }
                     .footer-content {
                         flex-direction: column !important;
-                        gap: 40px !important;
+                        gap: 30px !important;
                         text-align: center !important;
                         align-items: center !important;
                     }
                     .footer-links-container {
                         width: 100% !important;
                         justify-content: center !important;
-                        gap: 60px !important;
+                        gap: 40px !important;
+                    }
+                }
+                @media (max-width: 480px) {
+                    .contact-card {
+                        padding: 25px 20px !important;
+                    }
+                    .footer-links-container {
+                        flex-direction: column !important;
+                        gap: 30px !important;
                     }
                 }
             `}</style>

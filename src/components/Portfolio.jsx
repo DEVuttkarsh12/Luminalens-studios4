@@ -220,9 +220,16 @@ export default function Portfolio() {
                     .horizontal-row { 
                         flex-direction: column !important; 
                         padding: 0 5% !important; 
-                        gap: 40px !important; 
+                        gap: 20px !important; 
                         transform: none !important; 
                         margin-top: 15vh !important;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .horizontal-row {
+                        margin-top: 10vh !important;
+                        gap: 25px !important;
                     }
                 }
             `}</style>
@@ -260,8 +267,24 @@ function ProjectCard({ project, index, onClick }) {
                 @media (max-width: 768px) {
                     .portfolio-card-container { 
                         min-width: 100% !important; 
-                        height: 450px !important; 
+                        height: 480px !important; 
                         margin-top: 0 !important;
+                    }
+                }
+                @media (max-width: 480px) {
+                    .portfolio-card-container {
+                        height: 400px !important;
+                    }
+                    .portfolio-card-container h3 {
+                        font-size: 2rem !important;
+                    }
+                    .portfolio-card-container p {
+                        font-size: 0.85rem !important;
+                    }
+                    .portfolio-card-container div[style*="fontSize: '10rem'"] {
+                        font-size: 6rem !important;
+                        top: 20px !important;
+                        right: 30px !important;
                     }
                 }
             `}</style>

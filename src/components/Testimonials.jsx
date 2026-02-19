@@ -52,9 +52,9 @@ export default function Testimonials() {
 
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(280px, 90vw, 360px), 1fr))',
-                    gap: '25px',
-                    padding: '0 10px'
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(250px, 90vw, 360px), 1fr))',
+                    gap: '20px',
+                    padding: '0 5px'
                 }}>
                     {testimonials.map((t, index) => (
                         <motion.div
@@ -66,7 +66,7 @@ export default function Testimonials() {
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                             className="glass-card-premium"
                             style={{
-                                padding: 'clamp(25px, 5vw, 40px)',
+                                padding: 'clamp(20px, 5vw, 40px)',
                                 display: 'flex',
                                 flexDirection: 'column',
                                 justifyContent: 'space-between',

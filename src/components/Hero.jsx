@@ -158,6 +158,22 @@ export default function Hero() {
                             margin-bottom: 2rem !important;
                         }
                     }
+
+                    @media (max-width: 480px) {
+                        . hero-container > div {
+                            padding-top: 10vh !important;
+                        }
+                        h1 { 
+                            font-size: clamp(1.8rem, 12vw, 2.5rem) !important; 
+                        }
+                        p {
+                            font-size: 0.85rem !important;
+                        }
+                        .glow-btn {
+                            padding: 12px 25px !important;
+                            font-size: 0.8rem !important;
+                        }
+                    }
                 `}</style>
             </div>
 

@@ -138,6 +138,34 @@ export default function Services() {
                     ))}
                 </div>
             </div>
+            <style>{`
+                @media (max-width: 768px) {
+                    .glass-service-card {
+                        padding: 35px 25px !important;
+                        min-height: 280px !important;
+                        gap: 20px !important;
+                    }
+                    #services { padding: 80px 0 !important; }
+                }
+
+                @media (max-width: 480px) {
+                    .glass-service-card {
+                        padding: 30px 20px !important;
+                        min-height: 240px !important;
+                    }
+                    .glass-service-card h3 {
+                        font-size: 1.4rem !important;
+                    }
+                    .glass-service-card p {
+                        font-size: 0.9rem !important;
+                    }
+                    .glass-service-card div[style*="fontSize: '4.5rem'"] {
+                        font-size: 3.5rem !important;
+                        top: 20px !important;
+                        right: 20px !important;
+                    }
+                }
+            `}</style>
         </section>
     );
 }

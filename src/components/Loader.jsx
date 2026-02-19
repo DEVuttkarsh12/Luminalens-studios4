@@ -85,8 +85,8 @@ export default function Loader({ onFinished }) {
                 }}
             />
 
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '15px' }}>
-                <div style={{ position: 'relative', width: '250px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '15px', width: '90%', maxWidth: '300px' }}>
+                <div style={{ position: 'relative', width: '100%' }}>
                     <div style={{ height: '1px', background: 'rgba(255,255,255,0.05)', width: '100%', position: 'absolute' }} />
                     <motion.div
                         style={{
@@ -100,7 +100,7 @@ export default function Loader({ onFinished }) {
                     />
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', width: '250px', marginTop: '10px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '10px', gap: '10px' }}>
                     <AnimatePresence mode="wait">
                         <motion.span
                             key={STATUS_MESSAGES[statusIndex]}
@@ -109,10 +109,11 @@ export default function Loader({ onFinished }) {
                             exit={{ opacity: 0, y: -5 }}
                             className="heading-font"
                             style={{
-                                fontSize: '1rem',
-                                letterSpacing: '0.3em',
+                                fontSize: 'clamp(0.7rem, 2vw, 0.9rem)',
+                                letterSpacing: '0.2em',
                                 textTransform: 'uppercase',
-                                color: 'rgba(255,255,255,0.8)'
+                                color: 'rgba(255,255,255,0.8)',
+                                flex: 1
                             }}
                         >
                             {STATUS_MESSAGES[statusIndex]}
@@ -123,7 +124,8 @@ export default function Loader({ onFinished }) {
                         fontSize: '0.65rem',
                         fontWeight: 400,
                         color: 'rgba(255,255,255,0.4)',
-                        fontFamily: 'monospace'
+                        fontFamily: 'monospace',
+                        flexShrink: 0
                     }}>
                         {Math.min(progress, 100)}%
                     </span>

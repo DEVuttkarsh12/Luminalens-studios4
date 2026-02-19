@@ -3,12 +3,18 @@ import { motion, useSpring } from 'framer-motion';
 
 export default function CustomCursor() {
     const [isHovering, setIsHovering] = useState(false);
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
 
     // Spring physics for smooth trailing - adjusted for "average/legit" speed
     const mouseX = useSpring(0, { stiffness: 250, damping: 35, restDelta: 0.001 });
     const mouseY = useSpring(0, { stiffness: 250, damping: 35, restDelta: 0.001 });
 
     useEffect(() => {
+        const checkTouch = () => {
+            setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+        };
+        checkTouch();
+
         const handleMouseMove = (e) => {
             mouseX.set(e.clientX);
             mouseY.set(e.clientY);
@@ -37,6 +43,8 @@ export default function CustomCursor() {
             window.removeEventListener('mouseover', handleMouseOver);
         };
     }, [mouseX, mouseY]);
+
+    if (isTouchDevice) return null;
 
     return (
         <>

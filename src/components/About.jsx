@@ -49,7 +49,7 @@ export default function About() {
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
                     gap: '40px',
                     alignItems: 'center'
                 }}>
