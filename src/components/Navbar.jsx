@@ -117,7 +117,12 @@ export default function Navbar() {
                         ))}
                     </ul>
 
-                    <button className="glow-btn">
+                    <button
+                        className="glow-btn"
+                        onClick={() => {
+                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                    >
                         Get Started
                     </button>
                 </div>
@@ -176,7 +181,14 @@ export default function Navbar() {
                                 {link.name}
                             </a>
                         ))}
-                        <button className="glow-btn" style={{ width: '100%', marginTop: '20px' }}>
+                        <button
+                            className="glow-btn"
+                            style={{ width: '100%', marginTop: '20px' }}
+                            onClick={() => {
+                                setMobileMenuOpen(false);
+                                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                            }}
+                        >
                             Get Started
                         </button>
                     </motion.div>
