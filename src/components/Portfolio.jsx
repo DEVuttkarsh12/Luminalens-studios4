@@ -156,7 +156,7 @@ export default function Portfolio() {
                 alignItems: 'flex-start',
                 overflow: 'hidden'
             }}>
-                <div className="container" style={{
+                <div className="container portfolio-heading-container" style={{
                     position: 'absolute',
                     top: '8vh', // Pinned higher up
                     left: '50%',
@@ -226,28 +226,33 @@ export default function Portfolio() {
                     }
                     .horizontal-row + div { display: none; } /* Hide the extra spacer on mobile */
                     
-                    /* Fix heading overlap */
-                    .container[style*="position: 'absolute'"] {
+                    /* Fix heading overlap with robust selector */
+                    .portfolio-heading-container {
                         position: relative !important;
                         top: 0 !important;
                         left: 0 !important;
                         transform: none !important;
                         margin-bottom: 60px !important;
                         padding: 0 20px !important;
+                        pointer-events: auto !important; /* Re-enable pointer events for possible child links */
                     }
                 }
 
                 @media (max-width: 480px) {
-                    #work { padding: 100px 0 60px 0 !important; }
+                    #work { padding: 80px 0 40px 0 !important; }
+                    .vertical-spacer { display: none !important; }
                     .horizontal-row {
-                        margin-top: 10px !important;
-                        gap: 25px !important;
+                        margin-top: 30px !important;
+                        gap: 30px !important;
                     }
-                    .container[style*="position: 'absolute'"] {
-                        margin-bottom: 40px !important;
+                    .portfolio-heading-container {
+                        margin-bottom: 50px !important;
                     }
-                    .container[style*="position: 'absolute'"] h2 {
-                        font-size: 2.8rem !important;
+                    .portfolio-heading-container h2 {
+                        font-size: clamp(2rem, 10vw, 2.6rem) !important;
+                    }
+                    .portfolio-heading-container span {
+                        font-size: 0.7rem !important;
                     }
                 }
             `}</style>

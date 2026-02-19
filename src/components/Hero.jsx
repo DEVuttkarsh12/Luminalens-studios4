@@ -79,7 +79,7 @@ export default function Hero() {
                             color: 'rgba(255,255,255,0.7)',
                             display: 'block'
                         }}>
-                            Capabilities / Creative Studio
+                            Creative Studio
                         </span>
                         <div style={{ display: 'flex', flexDirection: 'column' }}></div>
                         <h1 className="text-premium" style={{

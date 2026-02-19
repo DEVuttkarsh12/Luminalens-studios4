@@ -57,11 +57,9 @@ export default function Loader({ onFinished }) {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                zIndex: 10000,
-                gap: '30px'
+                zIndex: 10000
             }}
         >
-            {/* Central Tech Ring Decoration with Glow */}
             <motion.div
                 animate={{
                     rotate: 360,
@@ -77,15 +75,24 @@ export default function Loader({ onFinished }) {
                 }}
                 style={{
                     position: 'absolute',
-                    width: 'clamp(200px, 60vw, 350px)',
-                    height: 'clamp(200px, 60vw, 350px)',
-                    border: '1px solid rgba(255,255,255,0.2)',
+                    width: 'clamp(220px, 70vw, 380px)',
+                    height: 'clamp(220px, 70vw, 380px)',
+                    border: '1px solid rgba(255,255,255,0.15)',
                     borderRadius: '50%',
-                    borderTop: '2px solid #fff'
+                    borderTop: '2px solid #fff',
+                    zIndex: 1
                 }}
             />
 
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '15px', width: '90%', maxWidth: '300px' }}>
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '12px',
+                width: 'clamp(170px, 45vw, 260px)',
+                zIndex: 2,
+                position: 'relative'
+            }}>
                 <div style={{ position: 'relative', width: '100%' }}>
                     <div style={{ height: '1px', background: 'rgba(255,255,255,0.05)', width: '100%', position: 'absolute' }} />
                     <motion.div
@@ -100,7 +107,7 @@ export default function Loader({ onFinished }) {
                     />
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '10px', gap: '10px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '5px' }}>
                     <AnimatePresence mode="wait">
                         <motion.span
                             key={STATUS_MESSAGES[statusIndex]}
@@ -109,10 +116,10 @@ export default function Loader({ onFinished }) {
                             exit={{ opacity: 0, y: -5 }}
                             className="heading-font"
                             style={{
-                                fontSize: 'clamp(0.7rem, 2vw, 0.9rem)',
+                                fontSize: 'clamp(0.6rem, 2vw, 0.75rem)',
                                 letterSpacing: '0.2em',
                                 textTransform: 'uppercase',
-                                color: 'rgba(255,255,255,0.8)',
+                                color: 'rgba(255,255,255,0.7)',
                                 flex: 1
                             }}
                         >
@@ -121,9 +128,9 @@ export default function Loader({ onFinished }) {
                     </AnimatePresence>
 
                     <span style={{
-                        fontSize: '0.65rem',
+                        fontSize: '0.6rem',
                         fontWeight: 400,
-                        color: 'rgba(255,255,255,0.4)',
+                        color: 'rgba(255,255,255,0.3)',
                         fontFamily: 'monospace',
                         flexShrink: 0
                     }}>
@@ -133,8 +140,8 @@ export default function Loader({ onFinished }) {
             </div>
 
             {/* Decorative corners for a "tech viewport" feel */}
-            <div style={{ position: 'absolute', top: '40px', left: '40px', borderLeft: '1px solid rgba(255,255,255,0.1)', borderTop: '1px solid rgba(255,255,255,0.1)', width: '20px', height: '20px' }} />
-            <div style={{ position: 'absolute', bottom: '40px', right: '40px', borderRight: '1px solid rgba(255,255,255,0.1)', borderBottom: '1px solid rgba(255,255,255,0.1)', width: '20px', height: '20px' }} />
+            <div style={{ position: 'absolute', top: '40px', left: '40px', borderLeft: '1px solid rgba(255,255,255,0.05)', borderTop: '1px solid rgba(255,255,255,0.05)', width: '20px', height: '20px' }} />
+            <div style={{ position: 'absolute', bottom: '40px', right: '40px', borderRight: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', width: '20px', height: '20px' }} />
         </motion.div>
     );
 }
