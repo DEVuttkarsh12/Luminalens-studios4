@@ -134,14 +134,29 @@ export default function Hero() {
                 <style>{`
                     @media (max-width: 991px) {
                         .hero-3d-scene { display: none; }
-                        .hero-container > div { flex-direction: column !important; justify-content: center !important; text-align: center !important; }
-                        .hero-container > div > div { alignItems: center !important; textAlign: center !important; }
+                        .hero-container > div { 
+                            flex-direction: column !important; 
+                            justify-content: center !important; 
+                            text-align: center !important;
+                            padding-top: 5vh !important;
+                        }
+                        .hero-container > div > div { 
+                            align-items: center !important; 
+                            text-align: center !important; 
+                        }
                     }
 
                     @media (max-width: 768px) {
                         .hero-container { padding: 20px; }
-                        h1 { font-size: 2.8rem !important; }
-                        p { font-size: 0.8rem !important; }
+                        h1 { 
+                            font-size: clamp(2.2rem, 10vw, 3.5rem) !important; 
+                            line-height: 1.05 !important;
+                            margin-bottom: 1.5rem !important;
+                        }
+                        p { 
+                            font-size: 0.95rem !important; 
+                            margin-bottom: 2rem !important;
+                        }
                     }
                 `}</style>
             </div>

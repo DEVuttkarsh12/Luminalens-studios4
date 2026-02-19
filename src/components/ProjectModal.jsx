@@ -387,10 +387,35 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             </AnimatePresence>
             <style>{`
                 @media (max-width: 900px) {
-                    .modal-content > div { flex-direction: column-reverse !important; overflow-y: auto !important; }
-                    .modal-content > div > div { flex: none !important; width: 100% !important; min-width: 0 !important; }
-                    .modal-content > div > div:last-child { height: 40vh !important; }
-                    .modal-content > div > div:first-child { padding: 40px 30px !important; }
+                    .glass-card-premium {
+                        flex-direction: column !important;
+                        height: 90vh !important;
+                        max-height: none !important;
+                        border-radius: 24px !important;
+                    }
+                    .modal-content > div { 
+                        flex-direction: column-reverse !important; 
+                        overflow-y: auto !important; 
+                    }
+                    .modal-content > div > div { 
+                        flex: none !important; 
+                        width: 100% !important; 
+                        min-width: 0 !important; 
+                    }
+                    .modal-content > div > div:last-child { 
+                        height: 35vh !important;
+                        min-height: 250px !important;
+                    }
+                    .modal-content > div > div:first-child { 
+                        padding: 30px 20px !important; 
+                    }
+                    .modal-content h2 {
+                        font-size: 1.8rem !important;
+                    }
+                    .modal-content p {
+                        font-size: 0.9rem !important;
+                        line-height: 1.6 !important;
+                    }
                 }
             `}</style>
         </AnimatePresence>

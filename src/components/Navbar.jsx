@@ -48,37 +48,39 @@ export default function Navbar() {
             }}>
                 <div
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className="nav-logo-container"
                     style={{
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
                         height: scrolled ? '60px' : '80px',
                         transition: 'height 0.3s ease',
-                        display: 'flex',
-                        alignItems: 'center'
+                        position: 'relative'
                     }}
                 >
                     <img
                         src={logo}
                         alt="Luminalens Studios"
+                        className="nav-logo-img"
                         style={{
                             height: '100%',
                             width: 'auto',
                             objectFit: 'contain',
                             display: 'block',
-                            transform: scrolled ? 'scale(2.0) translateY(2px)' : 'scale(2.6) translateY(3px)',
                             transformOrigin: 'left center',
                             filter: 'brightness(1.1) contrast(1.1)'
                         }}
                     />
-                    <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginLeft: scrolled ? '65px' : '110px', // Re-calibrated for visual consistency
-                        transform: scrolled ? 'scale(1.1) translateY(2px)' : 'scale(1.4) translateY(3px)',
-                        opacity: 0.9
-                    }}>
+                    <div
+                        className="nav-lens-icon"
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            marginLeft: scrolled ? '65px' : '110px',
+                            opacity: 0.9
+                        }}
+                    >
                         <img
                             src={lensIcon}
                             alt=""
@@ -182,11 +184,30 @@ export default function Navbar() {
             </AnimatePresence>
 
             <style>{`
+                .nav-logo-img {
+                    transform: ${scrolled ? 'scale(2.0) translateY(2px)' : 'scale(2.6) translateY(3px)'};
+                }
+                .nav-lens-icon {
+                    transform: ${scrolled ? 'scale(1.1) translateY(2px)' : 'scale(1.4) translateY(3px)'};
+                }
+
                 @media (max-width: 991px) {
                     .desktop-nav { display: none !important; }
                     .mobile-toggle { display: flex !important; }
                 }
+
+                @media (max-width: 768px) {
+                    .nav-logo-img {
+                        transform: scale(1.6) translateY(2px) !important;
+                    }
+                    .nav-lens-icon {
+                        margin-left: 55px !important;
+                        transform: scale(0.9) translateY(2px) !important;
+                    }
+                    nav { height: 75px !important; }
+                    .nav-logo-container { height: 60px !important; }
+                }
             `}</style>
-        </nav>
+        </nav >
     );
 }

@@ -12,6 +12,8 @@ import Props2 from '../assets/3d animation/Hell_2.png';
 import Product1 from '../assets/product animation adn renders/Product_Study.png';
 import Product2 from '../assets/product animation adn renders/2_FINAL_chair render.png';
 import Product3 from '../assets/product animation adn renders/C1.png';
+import Hair1 from '../assets/human hairs/1.png';
+import Hair2 from '../assets/human hairs/Color Correction-1766056926000.png';
 
 const projects = [
     {
@@ -107,6 +109,25 @@ const projects = [
             }
         ]
     },
+    {
+        id: 6,
+        title: 'Realistic Human Hair',
+        category: 'CGI / Character Art',
+        description: 'Hyper-realistic grooming and hair simulation, focusing on intricate detail, natural flow, and physically accurate lighting. This project showcases advanced techniques in digital毛 simulation.',
+        img: Hair1,
+        slides: [
+            {
+                src: Hair1,
+                title: 'Hair Detail — Flow & Groom',
+                description: 'A study in realistic hair grooming, focusing on the natural distribution and flow of individual strands. This render demonstrates high-fidelity hair simulation with complex layering.'
+            },
+            {
+                src: Hair2,
+                title: 'Color & Lighting Variant',
+                description: 'Exploring different lighting setups and color corrections to highlight the subsurface scattering and metallic-like sheen of high-quality digital hair.'
+            }
+        ]
+    },
 ];
 
 export default function Portfolio() {
@@ -116,7 +137,7 @@ export default function Portfolio() {
         target: targetRef,
     });
 
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-72%"]); // Re-calibrated for 5 items to prevent over-scroll
+    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-76%"]); // Fine-tuned for 6 items to stop exactly at the last card
 
     return (
         <section ref={targetRef} id="work" className="section" style={{
@@ -169,7 +190,10 @@ export default function Portfolio() {
                     </motion.div>
                 </div>
 
-                <motion.div style={{ x, display: 'flex', gap: '8vw', paddingLeft: 'min(15vw, 25vw)', marginTop: '10vh' }}>
+                <motion.div
+                    className="horizontal-row"
+                    style={{ x, display: 'flex', gap: '8vw', paddingLeft: 'min(15vw, 25vw)', marginTop: '10vh' }}
+                >
                     {projects.map((project, index) => (
                         <ProjectCard
                             key={project.id}
@@ -191,9 +215,15 @@ export default function Portfolio() {
 
             <style>{`
                 @media (max-width: 768px) {
-                    #work { height: auto !important; padding: 60px 0 !important; }
+                    #work { height: auto !important; padding: 100px 0 !important; }
                     #work > div { position: relative !important; height: auto !important; display: block !important; overflow: visible !important; }
-                    .horizontal-row { flex-direction: column !important; padding: 0 20px !important; gap: 60px !important; transform: none !important; }
+                    .horizontal-row { 
+                        flex-direction: column !important; 
+                        padding: 0 5% !important; 
+                        gap: 40px !important; 
+                        transform: none !important; 
+                        margin-top: 15vh !important;
+                    }
                 }
             `}</style>
         </section>
@@ -211,6 +241,7 @@ function ProjectCard({ project, index, onClick }) {
 
     return (
         <div
+            className="portfolio-card-container"
             ref={cardRef}
             style={{
                 minWidth: '70vw',
@@ -225,6 +256,15 @@ function ProjectCard({ project, index, onClick }) {
             }}
             onClick={onClick}
         >
+            <style>{`
+                @media (max-width: 768px) {
+                    .portfolio-card-container { 
+                        min-width: 100% !important; 
+                        height: 450px !important; 
+                        margin-top: 0 !important;
+                    }
+                }
+            `}</style>
             <motion.div
                 whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}

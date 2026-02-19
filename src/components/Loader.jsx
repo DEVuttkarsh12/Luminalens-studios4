@@ -77,8 +77,8 @@ export default function Loader({ onFinished }) {
                 }}
                 style={{
                     position: 'absolute',
-                    width: '300px',
-                    height: '300px',
+                    width: 'clamp(200px, 60vw, 350px)',
+                    height: 'clamp(200px, 60vw, 350px)',
                     border: '1px solid rgba(255,255,255,0.2)',
                     borderRadius: '50%',
                     borderTop: '2px solid #fff'

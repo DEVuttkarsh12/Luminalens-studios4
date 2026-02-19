@@ -16,21 +16,27 @@ export default function Contact() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    style={{ textAlign: 'center', marginBottom: '100px' }}
+                    style={{ textAlign: 'center', marginBottom: 'clamp(50px, 8vw, 100px)' }}
                 >
-                    <h2 className="text-gradient-purple" style={{ fontSize: 'clamp(3rem, 10vw, 6.5rem)', lineHeight: 1.1, marginBottom: '2.5rem', fontWeight: 900, textTransform: 'uppercase' }}>
+                    <h2 className="text-gradient-purple" style={{
+                        fontSize: 'clamp(2.5rem, 8vw, 6.5rem)',
+                        lineHeight: 1.05,
+                        marginBottom: '1.5rem',
+                        fontWeight: 900,
+                        textTransform: 'uppercase'
+                    }}>
                         Let's work <br />
                         Together.
                     </h2>
-                    <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto', fontSize: '1.2rem', lineHeight: 1.7 }}>
+                    <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto', fontSize: 'clamp(0.95rem, 1.5vw, 1.2rem)', lineHeight: 1.7 }}>
                         Available for new projects. Bring your 3D visions to life with our specialized studio.
                     </p>
                 </motion.div>
 
-                <div style={{
+                <div className="contact-grid" style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                    gap: '80px',
+                    gap: 'clamp(30px, 5vw, 80px)',
                     alignItems: 'start'
                 }}>
                     {/* Contact Details & QR */}
@@ -39,9 +45,9 @@ export default function Contact() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="glass-card-premium"
+                        className="glass-card-premium contact-card"
                         style={{
-                            padding: '60px',
+                            padding: 'clamp(30px, 5vw, 60px)',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '30px'
@@ -108,9 +114,9 @@ export default function Contact() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="glass-card-premium"
+                        className="glass-card-premium contact-card"
                         style={{
-                            padding: '60px',
+                            padding: 'clamp(30px, 5vw, 60px)',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '30px'
@@ -192,8 +198,8 @@ export function Footer() {
     return (
         <footer style={{ padding: '100px 0 60px 0', borderTop: '1px solid rgba(255,255,255,0.05)', background: 'transparent' }}>
             <div className="container">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '60px' }}>
-                    <div>
+                <div className="footer-content" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '60px' }}>
+                    <div className="footer-brand-section">
                         <div style={{ fontWeight: 900, fontSize: '1.4rem', color: 'var(--text-main)', letterSpacing: '1px', marginBottom: '20px' }}>
                             Luminalens <span style={{ color: 'var(--text-muted)', fontWeight: 300 }}>Studios</span>
                         </div>
@@ -202,7 +208,7 @@ export function Footer() {
                         </p>
                     </div>
 
-                    <div style={{ display: 'flex', gap: '100px' }}>
+                    <div className="footer-links-container" style={{ display: 'flex', gap: 'clamp(40px, 8vw, 100px)' }}>
                         <div>
                             <h5 style={{ color: 'var(--text-main)', marginBottom: '25px', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.8rem' }}>Links</h5>
                             <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -222,10 +228,30 @@ export function Footer() {
                     </div>
                 </div>
 
-                <div style={{ marginTop: '100px', textAlign: 'center', color: 'rgba(255,255,255,0.1)', fontSize: '0.75rem', letterSpacing: '2px', textTransform: 'uppercase' }}>
+                <div style={{ marginTop: 'clamp(50px, 10vw, 100px)', textAlign: 'center', color: 'rgba(255,255,255,0.1)', fontSize: '0.7rem', letterSpacing: '2px', textTransform: 'uppercase' }}>
                     &copy; 2026 LUMINALENS STUDIOS - PROPELLED BY ANTIGRAVITY
                 </div>
             </div>
+            <style>{`
+                @media (max-width: 768px) {
+                    #contact { padding: 80px 0 !important; }
+                    .contact-grid { 
+                        grid-template-columns: 1fr !important;
+                        gap: 40px !important;
+                    }
+                    .footer-content {
+                        flex-direction: column !important;
+                        gap: 40px !important;
+                        text-align: center !important;
+                        align-items: center !important;
+                    }
+                    .footer-links-container {
+                        width: 100% !important;
+                        justify-content: center !important;
+                        gap: 60px !important;
+                    }
+                }
+            `}</style>
         </footer>
     );
 }
