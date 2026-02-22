@@ -368,20 +368,102 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                             <IoCloseOutline size={28} />
                         </button>
 
-                        <motion.img
-                            src={images[currentIndex]}
-                            initial={{ scale: 0.9, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0.9, opacity: 0 }}
-                            style={{
-                                maxWidth: '95vw',
-                                maxHeight: '95vh',
-                                objectFit: 'contain',
-                                borderRadius: '8px',
-                                boxShadow: '0 0 50px rgba(0,0,0,0.5)'
+                        {/* Previous Button (Expanded) */}
+                        <motion.button
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -20 }}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handlePrev();
                             }}
-                            onClick={(e) => e.stopPropagation()}
-                        />
+                            style={{
+                                position: 'absolute',
+                                left: '30px',
+                                zIndex: 10015,
+                                background: 'rgba(255, 255, 255, 0.05)',
+                                border: '1px solid rgba(255, 255, 255, 0.1)',
+                                borderRadius: '50%',
+                                width: '60px',
+                                height: '60px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                color: '#fff',
+                                cursor: 'pointer',
+                                backdropFilter: 'blur(10px)',
+                                transition: 'all 0.3s ease'
+                            }}
+                            className="hover-scale"
+                        >
+                            <IoChevronBackOutline size={28} />
+                        </motion.button>
+
+                        {/* Next Button (Expanded) */}
+                        <motion.button
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 20 }}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleNext();
+                            }}
+                            style={{
+                                position: 'absolute',
+                                right: '30px',
+                                zIndex: 10015,
+                                background: 'rgba(255, 255, 255, 0.05)',
+                                border: '1px solid rgba(255, 255, 255, 0.1)',
+                                borderRadius: '50%',
+                                width: '60px',
+                                height: '60px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                color: '#fff',
+                                cursor: 'pointer',
+                                backdropFilter: 'blur(10px)',
+                                transition: 'all 0.3s ease'
+                            }}
+                            className="hover-scale"
+                        >
+                            <IoChevronForwardOutline size={28} />
+                        </motion.button>
+
+                        <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                            <motion.img
+                                key={currentIndex}
+                                src={images[currentIndex]}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.4 }}
+                                style={{
+                                    maxWidth: '90vw',
+                                    maxHeight: '85vh',
+                                    objectFit: 'contain',
+                                    borderRadius: '12px',
+                                    boxShadow: '0 0 50px rgba(0,0,0,0.8)',
+                                    border: '1px solid rgba(255,255,255,0.1)'
+                                }}
+                                onClick={(e) => e.stopPropagation()}
+                            />
+
+                            {/* Slide Counter (Expanded) */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                style={{
+                                    marginTop: '20px',
+                                    color: 'rgba(255,255,255,0.5)',
+                                    fontSize: '0.9rem',
+                                    fontWeight: 500,
+                                    letterSpacing: '0.2em'
+                                }}
+                            >
+                                {String(currentIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
+                            </motion.div>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -443,6 +525,17 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                         right: 15px !important;
                         width: 32px !important;
                         height: 32px !important;
+                    }
+                    /* Expanded view controls */
+                    button[style*="left: '30px'"] {
+                        left: 10px !important;
+                        width: 45px !important;
+                        height: 45px !important;
+                    }
+                    button[style*="right: '30px'"] {
+                        right: 10px !important;
+                        width: 45px !important;
+                        height: 45px !important;
                     }
                 }
             `}</style>

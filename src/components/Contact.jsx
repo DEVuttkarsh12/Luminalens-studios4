@@ -1,12 +1,57 @@
-import { motion } from 'framer-motion';
-import { Mail, Phone, Globe } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Phone, Globe, CheckCircle } from 'lucide-react';
 
 export default function Contact() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
+
     const contactInfo = [
-        { icon: <Mail size={20} />, text: 'hello@luminalens.studio', label: 'Email' },
-        { icon: <Phone size={20} />, text: '+91 98765 43210', label: 'Phone' },
+        { icon: <Mail size={20} />, text: 'Luminalensstudios@gmail.com', label: 'Email' },
+        { icon: <Phone size={20} />, text: '+91 97791 73306', label: 'Phone' },
         { icon: <Globe size={20} />, text: 'www.luminalens.studio', label: 'Website' },
     ];
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/Luminalensstudios@gmail.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    message: formData.message,
+                    _subject: "New Query from Luminalens Studio"
+                })
+            });
+
+            if (response.ok) {
+                setShowSuccess(true);
+                setFormData({ name: '', email: '', message: '' });
+                setTimeout(() => setShowSuccess(false), 5000);
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+            alert("Oops! Something went wrong. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
     return (
         <section id="contact" className="section" style={{ minHeight: '100vh', padding: '140px 0' }}>
@@ -39,6 +84,7 @@ export default function Contact() {
                     gap: 'clamp(30px, 5vw, 80px)',
                     alignItems: 'start'
                 }}>
+
                     {/* Contact Details & QR */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -96,7 +142,7 @@ export default function Contact() {
                                 margin: '0 auto 25px auto'
                             }}>
                                 <img
-                                    src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=mailto:hello@luminalens.studio&bgcolor=ffffff&color=000000"
+                                    src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=mailto:Luminalensstudios@gmail.com&bgcolor=ffffff&color=000000"
                                     alt="Official Contact QR"
                                     style={{ width: '100%', height: '100%' }}
                                 />
@@ -123,11 +169,18 @@ export default function Contact() {
                         }}
                     >
                         <h3 style={{ fontSize: '1.8rem', letterSpacing: '0.05em', margin: 0 }}>Q&A / Query</h3>
-                        <form style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+                        <form
+                            onSubmit={handleSubmit}
+                            style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}
+                        >
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                                 <label style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '3px' }}>Name</label>
                                 <input
                                     type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
                                     placeholder="Your Name"
                                     style={{
                                         background: 'transparent',
@@ -148,6 +201,10 @@ export default function Contact() {
                                 <label style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '3px' }}>Email</label>
                                 <input
                                     type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
                                     placeholder="Your Email"
                                     style={{
                                         background: 'transparent',
@@ -167,6 +224,10 @@ export default function Contact() {
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                                 <label style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '3px' }}>Query</label>
                                 <textarea
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
                                     placeholder="How can we help you?"
                                     rows="3"
                                     style={{
@@ -185,11 +246,48 @@ export default function Contact() {
                                     onBlur={(e) => e.target.style.borderBottomColor = 'rgba(255,255,255,0.1)'}
                                 ></textarea>
                             </div>
-                            <button className="glow-btn" style={{ marginTop: '20px' }}>Submit Query</button>
+                            <button
+                                type="submit"
+                                className="glow-btn"
+                                style={{ marginTop: '20px', opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? 'Sending...' : 'Submit Query'}
+                            </button>
                         </form>
                     </motion.div>
                 </div>
             </div>
+
+            {/* Success Popup - Fixed Bottom Center */}
+            <AnimatePresence>
+                {showSuccess && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 100, x: '-50%' }}
+                        animate={{ opacity: 1, y: 0, x: '-50%' }}
+                        exit={{ opacity: 0, y: 100, x: '-50%' }}
+                        style={{
+                            position: 'fixed',
+                            bottom: '40px',
+                            left: '50%',
+                            zIndex: 10000,
+                            background: 'rgba(15, 8, 59, 0.95)',
+                            backdropFilter: 'blur(20px)',
+                            padding: '20px 40px',
+                            borderRadius: '100px',
+                            border: '1px solid var(--primary-glow)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '15px',
+                            boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+                            whiteSpace: 'nowrap'
+                        }}
+                    >
+                        <CheckCircle size={24} color="var(--primary-glow)" />
+                        <span className="heading-font" style={{ fontSize: '1rem', letterSpacing: '1px' }}>Query Submitted Successfully</span>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 }
