@@ -170,11 +170,11 @@ export default function Portfolio() {
                         style={{ opacity: useTransform(scrollYProgress, [0, 0.15], [1, 0]) }}
                     >
                         <span style={{
-                            color: 'var(--primary-glow)',
+                            color: '#fff',
                             fontWeight: 700,
                             letterSpacing: '0.3em',
                             textTransform: 'uppercase',
-                            fontSize: '0.8rem',
+                            fontSize: '0.9rem',
                             display: 'block',
                             marginBottom: '0.5rem'
                         }}>

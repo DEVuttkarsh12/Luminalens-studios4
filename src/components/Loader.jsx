@@ -116,10 +116,10 @@ export default function Loader({ onFinished }) {
                             exit={{ opacity: 0, y: -5 }}
                             className="heading-font"
                             style={{
-                                fontSize: 'clamp(0.6rem, 2vw, 0.75rem)',
+                                fontSize: 'clamp(0.7rem, 2.2vw, 0.85rem)',
                                 letterSpacing: '0.2em',
                                 textTransform: 'uppercase',
-                                color: 'rgba(255,255,255,0.7)',
+                                color: '#fff',
                                 flex: 1
                             }}
                         >

@@ -51,12 +51,12 @@ export default function Services() {
                     style={{ marginBottom: '6rem', textAlign: 'center' }}
                 >
                     <span style={{
-                        color: 'var(--primary-glow)',
-                        fontSize: '0.75rem',
+                        color: '#fff',
+                        fontSize: '0.85rem',
                         fontWeight: 800,
                         letterSpacing: '0.6em',
                         textTransform: 'uppercase',
-                        opacity: 0.8,
+                        opacity: 0.9,
                         display: 'block'
                     }}>
                         Capabilities

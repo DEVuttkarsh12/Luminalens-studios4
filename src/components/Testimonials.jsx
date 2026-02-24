@@ -36,11 +36,11 @@ export default function Testimonials() {
                     style={{ marginBottom: '5rem', textAlign: 'center' }}
                 >
                     <span style={{
-                        color: 'var(--primary-glow)',
+                        color: '#fff',
                         fontWeight: 700,
                         letterSpacing: '0.3em',
                         textTransform: 'uppercase',
-                        fontSize: '0.8rem',
+                        fontSize: '0.9rem',
                         display: 'block',
                         marginBottom: '1rem'
                     }}>

@@ -60,7 +60,7 @@ export default function About() {
                         transition={{ duration: 0.8 }}
                         style={{ textAlign: 'center' }}
                     >
-                        <span style={{ color: 'var(--primary-glow)', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', fontSize: '0.8rem', display: 'block', marginBottom: '1rem' }}>
+                        <span style={{ color: '#fff', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', fontSize: '0.9rem', display: 'block', marginBottom: '1rem' }}>
                             The Collective
                         </span>
                         <h2 className="text-gradient-purple" style={{ fontSize: 'clamp(2.2rem, 8vw, 4.5rem)', marginTop: '1rem', marginBottom: '2rem', lineHeight: 1.1 }}>Who We <br />Are.</h2>

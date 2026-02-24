@@ -70,13 +70,13 @@ export default function Hero() {
                         alignItems: 'flex-start'
                     }}>
                         <span style={{
-                            fontSize: 'clamp(0.7rem, 0.8vw, 0.9rem)',
+                            fontSize: 'clamp(0.8rem, 0.9vw, 1rem)',
                             fontWeight: 700,
                             letterSpacing: '0.5em',
                             textTransform: 'uppercase',
                             marginBottom: '1.5rem',
                             fontFamily: '"Inter", sans-serif',
-                            color: 'rgba(255,255,255,0.7)',
+                            color: '#fff',
                             display: 'block'
                         }}>
                             Creative Studio
