@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import ProjectLandingPage from './ProjectLandingPage';
 
 // Local asset imports
@@ -206,11 +206,15 @@ export default function Portfolio() {
                     <div style={{ minWidth: '20vw' }}></div>
                 </motion.div>
 
-                <ProjectLandingPage
-                    project={selectedProject}
-                    isOpen={!!selectedProject}
-                    onClose={() => setSelectedProject(null)}
-                />
+                <AnimatePresence>
+                    {selectedProject && (
+                        <ProjectLandingPage
+                            project={selectedProject}
+                            isOpen={!!selectedProject}
+                            onClose={() => setSelectedProject(null)}
+                        />
+                    )}
+                </AnimatePresence>
             </div>
 
             <style>{`
