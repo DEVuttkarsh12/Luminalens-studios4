@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, useSpring } from 'framer-motion';
 
 export default function CustomCursor() {
@@ -46,7 +47,10 @@ export default function CustomCursor() {
 
     if (isTouchDevice) return null;
 
-    return (
+    // Portal target
+    const portalRoot = typeof document !== 'undefined' ? document.body : null;
+
+    const cursorContent = (
         <>
             {/* Central Dot */}
             <motion.div
@@ -59,7 +63,7 @@ export default function CustomCursor() {
                     backgroundColor: '#fff',
                     borderRadius: '50%',
                     pointerEvents: 'none',
-                    zIndex: 99999,
+                    zIndex: 200000, // Higher than landing page (100000)
                     x: mouseX,
                     y: mouseY
                 }}
@@ -81,11 +85,13 @@ export default function CustomCursor() {
                     border: '1px solid #fff',
                     borderRadius: '50%',
                     pointerEvents: 'none',
-                    zIndex: 99998,
+                    zIndex: 199999, // Higher than landing page (100000)
                     x: mouseX,
                     y: mouseY
                 }}
             />
         </>
     );
+
+    return portalRoot ? createPortal(cursorContent, portalRoot) : null;
 }
