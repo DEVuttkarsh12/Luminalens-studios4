@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import ProjectModal from './ProjectModal';
+import ProjectLandingPage from './ProjectLandingPage';
 
 // Local asset imports
 import Cyber1 from '../assets/character design/Cyber_1.png';
@@ -206,7 +206,7 @@ export default function Portfolio() {
                     <div style={{ minWidth: '20vw' }}></div>
                 </motion.div>
 
-                <ProjectModal
+                <ProjectLandingPage
                     project={selectedProject}
                     isOpen={!!selectedProject}
                     onClose={() => setSelectedProject(null)}

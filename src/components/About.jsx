@@ -63,7 +63,7 @@ export default function About() {
                         <span style={{ color: '#fff', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', fontSize: '0.9rem', display: 'block', marginBottom: '1rem' }}>
                             The Collective
                         </span>
-                        <h2 className="text-gradient-purple" style={{ fontSize: 'clamp(2.2rem, 8vw, 4.5rem)', marginTop: '1rem', marginBottom: '2rem', lineHeight: 1.1 }}>Who We <br />Are</h2>
+                        <h2 className="text-gradient-purple" style={{ fontSize: 'clamp(2.2rem, 8vw, 4.5rem)', marginTop: '1rem', marginBottom: '2rem', lineHeight: 1.1 }}>Who We Are</h2>
                         <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.7, marginBottom: '2rem', maxWidth: '600px', marginInline: 'auto' }}>
                             We’re a multidisciplinary design company bringing together designers, visual artists, and creative thinkers. We work closely, move with intention, and focus on building work that feels clear and consistent across platforms.
 

@@ -71,7 +71,7 @@ export default function Contact() {
                         textTransform: 'uppercase'
                     }}>
                         Let's work <br />
-                        Together
+                        Together!
                     </h2>
                     <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto', fontSize: 'clamp(0.95rem, 1.5vw, 1.2rem)', lineHeight: 1.7 }}>
                         Available for new projects. Bring your 3D visions to life with our specialized studio.

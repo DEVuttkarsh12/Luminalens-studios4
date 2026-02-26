@@ -82,7 +82,6 @@ function Robot() {
             // Smooth interpolation
             groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, targetRotationY, 0.1);
             groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, targetRotationX, 0.1);
-
             // Idle floating
             if (state.clock) {
                 const t = state.clock.elapsedTime;
