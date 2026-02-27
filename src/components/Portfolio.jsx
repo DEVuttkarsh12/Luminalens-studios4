@@ -113,7 +113,7 @@ const projects = [
         id: 6,
         title: 'Realistic Human Hair',
         category: 'CGI / Character Art',
-        description: 'Hyper-realistic grooming and hair simulation, focusing on intricate detail, natural flow, and physically accurate lighting. This project showcases advanced techniques in digital毛 simulation.',
+        description: 'Hyper-realistic grooming and hair simulation, focusing on intricate detail, natural flow, and physically accurate lighting. This project showcases advanced techniques in digital hair simulation.',
         img: Hair1,
         slides: [
             {
@@ -128,6 +128,44 @@ const projects = [
             }
         ]
     },
+    {
+        id: 7,
+        title: 'Social Media Mastery',
+        category: 'Social Media Handling',
+        description: 'Elevating brand presence through strategic content creation, community engagement, and data-driven growth strategies. We turn followers into loyal advocates.',
+        img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop',
+        slides: [
+            {
+                src: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop',
+                title: 'Content Strategy',
+                description: 'Developing a cohesive visual language and voice that resonates across all platforms, from TikTok to LinkedIn.'
+            },
+            {
+                src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop',
+                title: 'Growth Analytics',
+                description: 'Leveraging real-time data to optimize performance and maximize reach through targeted campaigns and organic engagement.'
+            }
+        ]
+    },
+    {
+        id: 8,
+        title: 'Next-Gen Web Dev',
+        category: 'Web Development',
+        description: 'Building high-performance, immersive web experiences that combine cutting-edge technology with intuitive design. From complex apps to stunning portfolios.',
+        img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop',
+        slides: [
+            {
+                src: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop',
+                title: 'Performance Optimization',
+                description: 'Ensuring lightning-fast load times and smooth interactions through modern frameworks and clean architecture.'
+            },
+            {
+                src: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop',
+                title: 'Immersive Interfaces',
+                description: 'Creating unique digital experiences using 3D, motion, and interactive elements that captivate users from the first click.'
+            }
+        ]
+    }
 ];
 
 export default function Portfolio() {
@@ -137,12 +175,19 @@ export default function Portfolio() {
         target: targetRef,
     });
 
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-76%"]); // Fine-tuned for 6 items to stop exactly at the last card
+    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-82%"]);
+
+    const handleNextProject = () => {
+        if (!selectedProject) return;
+        const currentIndex = projects.findIndex(p => p.id === selectedProject.id);
+        const nextIndex = (currentIndex + 1) % projects.length;
+        setSelectedProject(projects[nextIndex]);
+    };
 
     return (
         <section ref={targetRef} id="work" className="section" style={{
             background: 'transparent',
-            height: '350vh', /* Slightly reduced to make it faster/tighter */
+            height: '450vh', /* Increased for more projects */
             position: 'relative',
             padding: 0
         }}>
@@ -151,14 +196,14 @@ export default function Portfolio() {
                 top: 0,
                 height: '100vh',
                 display: 'flex',
-                flexDirection: 'column', // Allow header to sit above
+                flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'flex-start',
                 overflow: 'hidden'
             }}>
                 <div className="container portfolio-heading-container" style={{
                     position: 'absolute',
-                    top: '8vh', // Pinned higher up
+                    top: '8vh',
                     left: '50%',
                     transform: 'translateX(-50%)',
                     zIndex: 10,
@@ -206,12 +251,14 @@ export default function Portfolio() {
                     <div style={{ minWidth: '20vw' }}></div>
                 </motion.div>
 
-                <AnimatePresence>
+                <AnimatePresence mode="wait">
                     {selectedProject && (
                         <ProjectLandingPage
+                            key={selectedProject.id}
                             project={selectedProject}
                             isOpen={!!selectedProject}
                             onClose={() => setSelectedProject(null)}
+                            onNext={handleNextProject}
                         />
                     )}
                 </AnimatePresence>
