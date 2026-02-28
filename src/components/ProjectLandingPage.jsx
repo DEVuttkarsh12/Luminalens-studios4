@@ -1,10 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
 const ProjectLandingPage = ({ project, isOpen, onClose, onNext }) => {
-    const containerRef = useRef(null);
 
     // Disable body scroll when open
     useEffect(() => {
@@ -96,7 +95,7 @@ const ProjectLandingPage = ({ project, isOpen, onClose, onNext }) => {
 
             {/* 2. Overview Section */}
             <section style={{ width: '100%', padding: '160px 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <div className="container" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '80px', maxWidth: '1400px', width: '90%' }}>
+                <div className="overview-container" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '80px', maxWidth: '1400px', width: '90%' }}>
                     <div>
                         <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '40px', fontWeight: 800 }}>Project Overview</h2>
                         <p style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', lineHeight: 1.8, color: 'rgba(255,255,255,0.7)', fontWeight: 300 }}>{project.description}</p>
@@ -127,6 +126,7 @@ const ProjectLandingPage = ({ project, isOpen, onClose, onNext }) => {
                             initial={{ opacity: 0, y: 50 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.8, delay: 0.1 }}
+                            className="gallery-slide-card"
                             style={{
                                 display: 'grid',
                                 gridTemplateColumns: 'minmax(300px, 1.2fr) 0.8fr',
@@ -145,7 +145,7 @@ const ProjectLandingPage = ({ project, isOpen, onClose, onNext }) => {
                             <div style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.1)' }}>
                                 <img src={slide.src} alt={slide.title} style={{ width: '100%', display: 'block' }} />
                             </div>
-                            <div style={{ paddingRight: '20px' }}>
+                            <div className="slide-content" style={{ paddingRight: '20px' }}>
                                 <h3 style={{ fontSize: '2.2rem', marginBottom: '20px', fontWeight: 700, color: '#fff' }}>{slide.title}</h3>
                                 <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, fontWeight: 300 }}>{slide.description}</p>
                             </div>
@@ -180,7 +180,27 @@ const ProjectLandingPage = ({ project, isOpen, onClose, onNext }) => {
                     color: var(--primary-glow);
                 }
                 @media (max-width: 900px) {
-                    .back-btn { top: 20px !important; left: 20px !important; padding: 8px 16px !important; }
+                    .back-btn { 
+                        top: 20px !important; 
+                        left: 20px !important; 
+                        padding: 10px 20px !important; 
+                        font-size: 0.8rem !important; 
+                    }
+                    section { padding: 100px 20px !important; }
+                    .overview-container, .gallery-slide-card { 
+                        grid-template-columns: 1fr !important; 
+                        gap: 40px !important; 
+                        padding: 30px !important;
+                    }
+                    .slide-content { padding-right: 0 !important; }
+                    .slide-content h3 { font-size: 1.8rem !important; }
+                }
+                @media (max-width: 480px) {
+                    .back-btn { top: 15px !important; left: 15px !important; }
+                    .gallery-slide-card { padding: 20px !important; border-radius: 20px !important; }
+                    h2 { font-size: 2.22rem !important; }
+                    h1 { font-size: 3.5rem !important; }
+                    .overview-container p { font-size: 1.1rem !important; }
                 }
             `}</style>
         </motion.div>

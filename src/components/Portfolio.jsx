@@ -60,10 +60,17 @@ const projects = [
         category: 'VFX / CGI',
         description: 'A cinematic visual effect sequence capturing the essence of dark energy and abstract motion through custom particle systems. Experience the ethereal beauty of the void through simulated physics and light.',
         img: 'https://images.unsplash.com/photo-1614728263952-84ea256f9679?q=80&w=1954&auto=format&fit=crop',
-        images: [
-            'https://images.unsplash.com/photo-1614728263952-84ea256f9679?q=80&w=1954&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2070&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop'
+        slides: [
+            {
+                src: 'https://images.unsplash.com/photo-1614728263952-84ea256f9679?q=80&w=1954&auto=format&fit=crop',
+                title: 'Ethereal Void',
+                description: 'A visual exploration of abstract space and energy, using advanced particle simulations to create a sense of infinite depth.'
+            },
+            {
+                src: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2070&auto=format&fit=crop',
+                title: 'Dynamic Particles',
+                description: 'Focusing on high-speed motion and chaotic energy, this piece captures the beauty of simulated physics in a dark, atmospheric setting.'
+            }
         ]
     },
     {
@@ -271,9 +278,9 @@ export default function Portfolio() {
                     .horizontal-row { 
                         flex-direction: column !important; 
                         padding: 0 5% !important; 
-                        gap: 20px !important; 
+                        gap: 40px !important; 
                         transform: none !important; 
-                        margin-top: 20px !important;
+                        margin-top: 40px !important;
                     }
                     .horizontal-row + div { display: none; } /* Hide the extra spacer on mobile */
                     
