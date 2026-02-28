@@ -9,6 +9,7 @@ import Testimonials from './components/Testimonials';
 import Contact, { Footer } from './components/Contact';
 import Background from './components/Background';
 import Loader from './components/Loader';
+import Playground from './components/Playground';
 import CustomCursor from './components/CustomCursor';
 import PixelReveal from './components/PixelReveal';
 import './index.css';
@@ -52,6 +53,7 @@ function App() {
             <About />
             <Testimonials />
             <Contact />
+            <Playground />
             <Footer />
           </motion.div>
         )}

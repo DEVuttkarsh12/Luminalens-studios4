@@ -84,7 +84,7 @@ const ProjectLandingPage = ({ project, isOpen, onClose, onNext }) => {
                 />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(5,5,5,0.2), #050505)' }} />
                 <div style={{ position: 'relative', textAlign: 'center', zIndex: 1, padding: '0 20px' }}>
-                    <motion.span style={{ fontSize: 'clamp(0.8rem, 2vw, 1rem)', textTransform: 'uppercase', letterSpacing: '0.5em', color: 'var(--primary-glow)', marginBottom: '20px', display: 'block' }}>{project.category}</motion.span>
+                    <motion.span style={{ fontSize: 'clamp(0.8rem, 2vw, 1rem)', textTransform: 'uppercase', letterSpacing: '0.5em', color: '#fff', marginBottom: '20px', display: 'block' }}>{project.category}</motion.span>
                     <motion.h1 style={{ fontSize: 'clamp(3rem, 10vw, 8rem)', fontWeight: 900, lineHeight: 0.9, margin: 0 }} className="text-premium">{project.title}</motion.h1>
                 </div>
                 <div style={{ position: 'absolute', bottom: '40px', left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
@@ -156,7 +156,7 @@ const ProjectLandingPage = ({ project, isOpen, onClose, onNext }) => {
 
             {/* 4. Next Project / Footer */}
             <section style={{ width: '100%', padding: '160px 0', borderTop: '1px solid rgba(255,255,255,0.05)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-                <p style={{ color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.3em', marginBottom: '20px', fontSize: '0.9rem' }}>Next Project</p>
+                <p style={{ color: '#fff', textTransform: 'uppercase', letterSpacing: '0.3em', marginBottom: '20px', fontSize: '0.9rem', fontWeight: 700 }}>Next Project</p>
                 <h2
                     onClick={onNext}
                     style={{ fontSize: 'clamp(3rem, 6vw, 6rem)', fontWeight: 800, cursor: 'pointer', marginBottom: '40px' }}

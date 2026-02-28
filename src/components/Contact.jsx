@@ -118,7 +118,7 @@ export default function Contact() {
                                         {info.icon}
                                     </div>
                                     <div>
-                                        <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', display: 'block', textTransform: 'uppercase', letterSpacing: '3px', marginBottom: '4px' }}>{info.label}</span>
+                                        <span style={{ fontSize: '0.7rem', color: '#fff', display: 'block', textTransform: 'uppercase', letterSpacing: '3px', marginBottom: '4px', fontWeight: 700 }}>{info.label}</span>
                                         <span style={{ fontSize: '1.1rem', fontWeight: 700 }}>{info.text}</span>
                                     </div>
                                 </div>
@@ -174,7 +174,7 @@ export default function Contact() {
                             style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}
                         >
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                                <label style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '3px' }}>Name</label>
+                                <label style={{ fontSize: '0.7rem', color: '#fff', textTransform: 'uppercase', letterSpacing: '3px', fontWeight: 700 }}>Name</label>
                                 <input
                                     type="text"
                                     name="name"
@@ -198,7 +198,7 @@ export default function Contact() {
                                 />
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                                <label style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '3px' }}>Email</label>
+                                <label style={{ fontSize: '0.7rem', color: '#fff', textTransform: 'uppercase', letterSpacing: '3px', fontWeight: 700 }}>Email</label>
                                 <input
                                     type="email"
                                     name="email"
@@ -222,7 +222,7 @@ export default function Contact() {
                                 />
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                                <label style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '3px' }}>Query</label>
+                                <label style={{ fontSize: '0.7rem', color: '#fff', textTransform: 'uppercase', letterSpacing: '3px', fontWeight: 700 }}>Query</label>
                                 <textarea
                                     name="message"
                                     value={formData.message}
